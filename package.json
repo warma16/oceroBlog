@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "author": "zeal",
+  "author": "ocero",
   "scripts": {
     "dev": "vuepress dev .",
     "build": "vuepress build .",
@@ -19,5 +19,5 @@
     "aos": "^2.3.4",
     "vue-class-component": "^7.2.3"
   },
-  "description": "blog for zeal"
+  "description": "blog for ocero"
 }

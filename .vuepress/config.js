@@ -1,13 +1,13 @@
 module.exports = {
-  "title": "zealsay说你想说",
-  "description": "zealsay说你想说,是一个关注于互联网、IT技术经验分享的个人独立博客。专注于IT行业最前沿的技术。致力成为互联网上最个性、最极客、具传播力的个人独立博客。",
+  "title": "ocero的博客",
+  "description": "一个菜鸡的小博客，来记录自己的生活和各种经验",
   "dest": "dist",
   "head": [
     [
       "link",
       {
         "rel": "icon",
-        "href": "https://pan.zealsay.com/blog/favicon.ico"
+        "href": "https://image-store-ocero.vercel.app/img/headimg_dl.ico"
       }
     ],
     [
@@ -18,13 +18,7 @@ module.exports = {
       }
     ],
     ['script', {}, `
-          var _hmt = _hmt || [];
-          (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?b0aae218897fa9d8a9f76e9a77e0b3c6";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-          })();
+          console.log("helloworld")
         `] //百度统计
   ],
   "locales": {
@@ -65,58 +59,41 @@ module.exports = {
     },
     "friendLink": [
       {
-        "title": "作者博客",
-        "desc": "zealsay说你想说",
-        "logo": "https://pan.zealsay.com/avatar/20200606105310570000000.jpg",
-        "link": "https://blog.zealsay.com"
+        "title": "夜灵空的博客",
+        "desc": "夜灵空的博客",
+        "logo": "https://image-store-ocero.vercel.app/img/v2-3ac2f78a023f8d0caab8ba20792ca5a2_xll.jpg",
+        "link": "https://blog.imylk.top/?from=oceroBlog"
       },
-      {
-        "title": "另一个博客",
-        "desc": "vuepress_blog",
-        "logo": "https://pan.zealsay.com/blog/logo.png",
-        "link": "https://www.zealsay.com"
-      },
-      {
-        "title": "午后南杂",
-        "desc": "Enjoy when you can, and endure when you must.",
-        "logo": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        "link": "https://www.recoluan.com"
-      },
-      {
-        "title": "zealsay开发指南",
-        "desc": "zealsay轻应用脚手架开发指南",
-        "logo": "https://pic.zealsay.com/20190909225214850000000.jpg",
-        "link": "https://docs.zealsay.com"
-      }
+
     ],
-    "valineConfig": {
+   /* "valineConfig": {
       "appId": "xxx",// your appId
       "appKey": "xxx", // your appKey
       "avatar": "", //
-      "enableQQ": true, //启用昵称框自动获取QQ昵称和QQ头像
+      "enableQQ": false, //启用昵称框自动获取QQ昵称和QQ头像
       "requiredFields": ['nick', 'mail'], //设置必填项
-    },
-    "logo": "/logo.png",
-    // "huawei": true, //首页出现华为文案
+    },*/
+    "logo": "https://image-store-ocero.vercel.app/img/headimg_dl",
+    "huawei": true, //首页出现华为文案
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
-    "author": "李白",
-    "authorAvatar": "https://pan.zealsay.com/avatar/20200606105310570000000.jpg",
-    "record": "你的备案号 ", //icp备案
-    "startYear": "2020",
-    "info": "一名追求技术喜欢安静的程序猿，目前在北京某互联网公司担任高级后台java开发。",
+    "author": "ocero",
+    "authorAvatar": "https://image-store-ocero.vercel.app/img/headimg_dl",
+    "record": "", //icp备案
+    "startYear": "2022",
+    "info": "一个平平无奇的小菜鸡，现在在尝试着做快乐的事情",
     "socials":{
-      "github" : "https://github.com/GodLikeZeal", //github
+      "github" : "https://github.com/warma16", //github
       "gitlub" : false, //gitlub
-      "gitee" : "https://gitee.com/GodLikeZeal", //gitee
-      "jianshu" : "https://www.jianshu.com/u/e2d051b6d2e9", //简书
-      "zhihu" : "https://www.zhihu.com/people/qian-ge-diao-63", //知乎
+      "gitee" : false, //gitee
+      "jianshu" : false, //简书
+      "zhihu" : false, //知乎
       "toutiao" : false, //知乎
-      "juejin": "https://juejin.im/user/2796746683716990", //掘金
-      "segmentfault" : "https://segmentfault.com/u/zeal_5eecb699bdb08", //思否
+      "juejin": false, //掘金
+      "segmentfault" : false, //思否
       "csdn" : false, //CSDN
-      "wechat" : "你的微信", //微信
+      "wechat" :false, //微信
       "qq" : "你的QQ" //QQ
     },
     "mottos": [{
@@ -148,13 +125,13 @@ module.exports = {
       }
     ],
     "covers": [
-      'https://pan.zealsay.com/zealsay/cover/7.jpg',
-      'https://pan.zealsay.com/zealsay/cover/1.jpg',
-      'https://pan.zealsay.com/zealsay/cover/2.jpg',
-      'https://pan.zealsay.com/zealsay/cover/3.jpg',
-      'https://pan.zealsay.com/zealsay/cover/4.jpg',
-      'https://pan.zealsay.com/zealsay/cover/5.jpg',
-      'https://pan.zealsay.com/zealsay/cover/6.jpg'
+      'https://image-store-ocero.vercel.app/img/20220724114411.png',
+      "https://image-store-ocero.vercel.app/img/20220724114536.png",
+      "https://image-store-ocero.vercel.app/img/20220724114921.png",
+      "https://image-store-ocero.vercel.app/img/20220724114953.png",
+      "https://image-store-ocero.vercel.app/img/20220724115030.png",
+      "https://image-store-ocero.vercel.app/img/20220724115104.png",
+      "https://image-store-ocero.vercel.app/img/20220724115150.png"
     ],
     "codeTheme": "tomorrow"
   },
