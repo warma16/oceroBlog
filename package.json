@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vuepress dev .",
     "build": "vuepress build .",
-    "upcdn": "vuepress build . && node ./scripts/upcdn.js"
+    "publish": "vuepress build . && node ./scripts/publish.js"
   },
   "devDependencies": {
     "glob": "^7.1.6",
