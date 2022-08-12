@@ -1,5 +1,4 @@
 const path = require('path')
-
 // Theme API.
 module.exports = (options, ctx) => ({
   alias () {
@@ -59,7 +58,33 @@ module.exports = (options, ctx) => ({
           layout: 'About',
           scopeLayout: 'About'
         }
-      ]
+      ],
+      sitemap: {
+        hostname: "https://ocero-blog.vercel.app"
+      },
+    }],
+    ['@stormbuf/vuepress-plugin-rss',{
+      // 网站域名，必填
+      // string
+      websiteDomain: 'https://stormbuf.top',
+      // rss item 数量
+      // 默认: 20
+      // number
+      count: 60,
+      // 生成的 rss 是否获取页面内容
+      // 默认: true
+      // boolearn
+      content: true,
+      // 生成 RSS 时，是否包括指定页面。generatePath 优先于 ignorePath。
+      // 支持正则
+      // Arrary<string>
+      // default: []
+      generatePath: ['.* ( html|htm ) '],
+      // 生成 RSS 时，是否不包括指定页面。
+      // 支持正则
+      // Arrary<string>
+      // default: ['/404.html','/404.htm']
+      ignorePath: ['/404.html', '/404.htm','/HelloWorld.html']
     }],
     'vuepress-plugin-smooth-scroll',
     ['container', {

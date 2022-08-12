@@ -17,9 +17,38 @@ module.exports = {
         "content": "width=device-width,initial-scale=1,user-scalable=no"
       }
     ],
+    [
+      "meta",
+      {
+        "name":"baidu-site-verification",
+        "content":"code-VMBvl258ky"
+      }
+    ],
     ['script', {}, `
-          console.log("helloworld")
-        `] //百度统计
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c001f53872329918b27f32dc8b9f5a1e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    
+    `] ,//百度统计
+    ["a",{
+      "style": "display: none;",
+      "href":"https://icp.gov.moe/?keyword=20224080",
+      "target":"_blank"
+
+    },"萌ICP备20224080号"],
+    ['script', {}, `
+      var linkDom = document.createElement('a');
+      linkDom.href="https://icp.gov.moe/?keyword=20224080"
+      linkDom.target="_blank"
+      linkDom.rel="noopener noreferrer"
+      linkDom.style="display:none"
+      //
+      //<a href="https://icp.gov.moe/?keyword=20224080" target="_blank">萌ICP备20224080号</a>
+    `] //萌备案
   ],
   "locales": {
     "/": {
@@ -64,7 +93,18 @@ module.exports = {
         "logo": "https://image-store-ocero.vercel.app/img/v2-3ac2f78a023f8d0caab8ba20792ca5a2_xll.jpg",
         "link": "https://blog.imylk.top/?from=oceroBlog"
       },
-
+      {
+        "title": "Py’s Whisper",
+        "desc": "一秒接过制服，一生志在蓝天！",
+        "logo": "https://oss.yzbh.tj.cn/halo/avatar.png",
+        "link": "https://whisper.pyliubaolin.top/?from=oceroBlog"
+      },
+      {
+        "title":"scooo的博客",
+        "desc":"无限进步",
+        "logo":"https://image-store-ocero.vercel.app/img/20220803003244.png",
+        "link":"https://scooomaker.top/?from=oceroBlog"
+      }
     ],
    /* "valineConfig": {
       "appId": "xxx",// your appId
@@ -73,6 +113,24 @@ module.exports = {
       "enableQQ": false, //启用昵称框自动获取QQ昵称和QQ头像
       "requiredFields": ['nick', 'mail'], //设置必填项
     },*/
+    "vssueConfig":{
+      /** 上线版本配置
+       * platform : github-v4
+       * clientId: 07cd693163f412d4f3ca
+       * clientSecret: dad78cad789e7c010d8751eef6bb31510943844a
+      */
+
+      /**本地版本配置
+       * platform : github-v4
+       * clientId：4b91e5877f341817a118
+       *clientSecret：49f2ca97dc3ee57d3023b6e48caa07c2a507d580
+      */
+      "platform": "github-v4",
+      "clientId": "07cd693163f412d4f3ca",
+      "clientSecret": "dad78cad789e7c010d8751eef6bb31510943844a",
+      "repo": "oceroBlogComments",
+      "owner": "warma16",
+    },
     "logo": "https://image-store-ocero.vercel.app/img/headimg_dl",
     "huawei": true, //首页出现华为文案
     "search": true,
@@ -80,7 +138,8 @@ module.exports = {
     "lastUpdated": "Last Updated",
     "author": "ocero",
     "authorAvatar": "https://image-store-ocero.vercel.app/img/headimg_dl",
-    "record": "", //icp备案
+    "record": "萌ICP备20224080号", //icp备案
+    "recordLink":"https://icp.gov.moe/?keyword=20224080",//icp备案链接
     "startYear": "2022",
     "info": "一个平平无奇的小菜鸡，现在在尝试着做快乐的事情",
     "socials":{

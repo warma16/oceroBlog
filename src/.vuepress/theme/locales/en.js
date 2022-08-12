@@ -7,5 +7,8 @@ export default {
   },
   tag: {
     all: 'All'
+  },
+  vssue:{
+    title:'Comments',
   }
 }

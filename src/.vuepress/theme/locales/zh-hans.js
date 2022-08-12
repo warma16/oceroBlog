@@ -7,5 +7,8 @@ export default {
   },
   tag: {
     all: '全部'
+  },
+  vssue:{
+    title:'留言',
   }
 }

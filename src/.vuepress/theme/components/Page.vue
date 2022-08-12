@@ -101,7 +101,7 @@
       // 是否显示评论
       shouldShowComments() {
         const {isShowComments} = this.$frontmatter
-        const {showComment} = this.$themeConfig.valineConfig || {showComment: true}
+        const {showComment} = this.$themeConfig.vssueConfig || {showComment: true}
         return (showComment !== false && isShowComments !== false) || (showComment === false && isShowComments === true)
       },
       showAccessNumber() {
