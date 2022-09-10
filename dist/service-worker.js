@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "4826e1df568b2c5ba914ddac2c3a4e63"
+    "revision": "6315d372aae10db03561e325fad62da6"
   },
   {
     "url": "about/index.html",
-    "revision": "01eef9e75f9e2524905ebbe2a9f176ab"
+    "revision": "8719586e4e94be57e24e812ed0ad5176"
   },
   {
     "url": "assets/css/0.styles.404a47e1.css",
@@ -58,28 +58,28 @@ self.__precacheManifest = [
     "revision": "f8c24d3a60771a744b9ce364f1d2533f"
   },
   {
-    "url": "assets/js/14.ff6d6394.js",
-    "revision": "59b5406b10cfbca390a3e02472c4cb60"
+    "url": "assets/js/14.308b764c.js",
+    "revision": "e7dbe6c26fe867e8945f67f6bbc4cc44"
   },
   {
     "url": "assets/js/15.9be230f2.js",
     "revision": "95bce832382e171953fc3288d3bda513"
   },
   {
-    "url": "assets/js/16.e4829134.js",
-    "revision": "4edd3a579459366dcccd853ad17cbfb7"
+    "url": "assets/js/16.6c4b2315.js",
+    "revision": "6c295b5518899963ec334ebb24436d2f"
   },
   {
     "url": "assets/js/17.6842e171.js",
     "revision": "e5264cfea50582ef33c3342a2a43a7d5"
   },
   {
-    "url": "assets/js/18.5852e732.js",
-    "revision": "219c09096681f96eb12092d0cece9fa8"
+    "url": "assets/js/18.08677cb2.js",
+    "revision": "0d16ce541cdae2c9f27591150017f053"
   },
   {
-    "url": "assets/js/19.d0eeb861.js",
-    "revision": "34b8b110b3a07ea000ad129088f4c43a"
+    "url": "assets/js/19.c7dde687.js",
+    "revision": "2dcdf59561abd073d0aa08e5d7e3c4a0"
   },
   {
     "url": "assets/js/20.5fb859a7.js",
@@ -90,12 +90,12 @@ self.__precacheManifest = [
     "revision": "9b0ef7dd3edb397e393e4d65ef050d82"
   },
   {
-    "url": "assets/js/22.79c77b6d.js",
-    "revision": "c79a4b593a291adbea1dc104744e6a95"
+    "url": "assets/js/22.ab4e43e7.js",
+    "revision": "282b50a07fc6c3431b17033f21ff74a2"
   },
   {
-    "url": "assets/js/23.fba75328.js",
-    "revision": "925d9b6881d882f3c05b2d46015dcc51"
+    "url": "assets/js/23.fa9a6299.js",
+    "revision": "a1eb91ea039a7c8c26a0807304645a3b"
   },
   {
     "url": "assets/js/24.cfdc2302.js",
@@ -130,8 +130,8 @@ self.__precacheManifest = [
     "revision": "ea0f40eff73d3a63aa773c16e31a24e1"
   },
   {
-    "url": "assets/js/app.1dccbc25.js",
-    "revision": "7fc48ca8ff97ba90751d0f2de13f3ae7"
+    "url": "assets/js/app.c4e37ada.js",
+    "revision": "b1f19de557fc35ecc351cd93742bcd8d"
   },
   {
     "url": "avatar.png",
@@ -147,63 +147,63 @@ self.__precacheManifest = [
   },
   {
     "url": "blogs/contactCards/2022世界5g大会交换过来的名片集.html",
-    "revision": "b53ebf2f65338f546a5abbf0ec7eb0fc"
+    "revision": "3b79b4c2f49b58ae061bcce768e6e9fe"
   },
   {
     "url": "blogs/education/高中英语同步练习册外研版听力音频合集.html",
-    "revision": "4316e7e9ae5252978821206c3bc4a193"
+    "revision": "ce3778a1697de03ab46a8568eb38a4f2"
   },
   {
     "url": "blogs/other/yeah.html",
-    "revision": "04d8fa69d1b5bbe8fea27f8adcfb97d6"
+    "revision": "96ab70be266ee319922492594d7e6d59"
   },
   {
     "url": "blogs/story/去2022世界5g大会的一些感触.html",
-    "revision": "0cf9d7049495dfbe3695b86a13fb9abd"
+    "revision": "68d1a732e9b1c617482c20fee65a7c82"
   },
   {
     "url": "blogs/tec/啊哈算法的学习.html",
-    "revision": "21b9958f31bbed133c5d1ede505dce15"
+    "revision": "1dde7e33c58159d208c93060e589ea9f"
   },
   {
     "url": "blogs/tec/神奇的picture标签.html",
-    "revision": "85587fb810e0a30b9fe7a5ddedc8cb34"
+    "revision": "6ce6137b6bcb991b3b14fb9e5429f251"
   },
   {
     "url": "blogs/tec/玩Diffsinger的小记.html",
-    "revision": "d3b3489ebb1bc8e73e99f0a99665df7f"
+    "revision": "ff3aff16c83a10897537279697b9cdaa"
   },
   {
     "url": "blogs/tec/node-json-db的一些坑.html",
-    "revision": "dee30068e7ad273af240e4669e753330"
+    "revision": "195e1a1533533adc2c5d25f1aae844d7"
   },
   {
     "url": "blogs/tec/QQ机器人的搭建.html",
-    "revision": "04eedfdc52622abcde3e8b5ccedb2a57"
+    "revision": "5616f9ebf432e489620f15c1af695346"
   },
   {
     "url": "categories/技术笔记/index.html",
-    "revision": "333c85737aa11a639f347c9e01413bdb"
+    "revision": "dae92351373e1a8b460f6bbba729b882"
   },
   {
     "url": "categories/教育相关/index.html",
-    "revision": "1b28a371eb6354576dbd704867217f6d"
+    "revision": "4d31d57e60c02e570254d0bbf00ce449"
   },
   {
     "url": "categories/名片集/index.html",
-    "revision": "d7de669d7f1d136504582ae53232d83d"
+    "revision": "c605f3416e4ef44519ad9e3a6148c830"
   },
   {
     "url": "categories/日记/index.html",
-    "revision": "d482de2a38ea466615afd8a31d8827ed"
+    "revision": "2df607dec1d936817f58f6e457906de4"
   },
   {
     "url": "categories/游记/index.html",
-    "revision": "f55b7c6c0544be9f8d2992e951c7937b"
+    "revision": "f4ab2b3cb18734335f76ac72b513cab7"
   },
   {
     "url": "categories/index.html",
-    "revision": "d3f712c653bf925aa0e1639bacc6a9b4"
+    "revision": "866b84b7b12031480c3150512dcf7c95"
   },
   {
     "url": "FluentDesign/core.css",
@@ -223,7 +223,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "c2587889efa5d217d33004aea8ba8b02"
+    "revision": "44a51150f138fc48aa9fea55044aed31"
   },
   {
     "url": "logo.png",
@@ -231,135 +231,135 @@ self.__precacheManifest = [
   },
   {
     "url": "README.en.html",
-    "revision": "b8a5f863883f9b25993f7055ef906d2c"
+    "revision": "591d9bc4af948a69f1287c9239769701"
   },
   {
     "url": "tag/2022大事件/index.html",
-    "revision": "632705e86c7b9e82884437140765d22c"
+    "revision": "8799150cea3f2a634cf97706fa8827ca"
   },
   {
     "url": "tag/2022世界5g大会/index.html",
-    "revision": "adbc16d8bc6296aeecbec12f036dbd43"
+    "revision": "c5e40122115b2e2afcf57b830932fd6d"
   },
   {
     "url": "tag/5G/index.html",
-    "revision": "3a66832dccdb2d22a0b659b3a4028c45"
+    "revision": "763f7646e151c00331f1f3c2e36440ac"
   },
   {
     "url": "tag/啊哈/index.html",
-    "revision": "9524014780000adc852df6bcb395163b"
+    "revision": "6f283f17e5fdd06dce8b7c4166c45f84"
   },
   {
     "url": "tag/啊哈磊/index.html",
-    "revision": "847b0a445f74110fb56a4dd4309676e5"
+    "revision": "8878fafdf6126878aca4f801e0f022b5"
   },
   {
     "url": "tag/高中/index.html",
-    "revision": "262ffc0df333a423cb9c23839556f330"
+    "revision": "9680ba82044b3239a2b276c13e82c1f8"
   },
   {
     "url": "tag/歌声合成/index.html",
-    "revision": "918a1242e9216ee746e46715b3d115b1"
+    "revision": "7e65c1d2fbb8ed4cea9c0994cb004ef8"
   },
   {
     "url": "tag/哈尔滨/index.html",
-    "revision": "a982085a49599747c54d82e6111acae5"
+    "revision": "a55af712b0f64aa1dba8996aee97ed7e"
   },
   {
     "url": "tag/科技展/index.html",
-    "revision": "cedeaa3714d036c11478ca40f88b324e"
+    "revision": "0f2b3fb197f58feb250862bb757a034f"
   },
   {
     "url": "tag/名片/index.html",
-    "revision": "1f623d600c3e9b6c1174d3e87ee849b4"
+    "revision": "2cde1b960b1d7457c505b31e895f71ad"
   },
   {
     "url": "tag/趣事小记/index.html",
-    "revision": "e67836d26eac2902121709c02d81194e"
+    "revision": "5d3e100e047ab24705e3484d0a543277"
   },
   {
     "url": "tag/算法/index.html",
-    "revision": "603dd207bae95b74a03953736f441da7"
+    "revision": "4b0a87973997eb129a1c76005f7dd412"
   },
   {
     "url": "tag/听力/index.html",
-    "revision": "6c510a4c5ba5a89e11fb653edfa3ca4e"
+    "revision": "2d9bb52d5c2c916c7323f6f2f33f55c0"
   },
   {
     "url": "tag/外研版/index.html",
-    "revision": "bd6ccf45af6b4cde7fcf5d4c18955dd5"
+    "revision": "636a8bda87e31b3aa60473d8e514c4d9"
   },
   {
     "url": "tag/英语/index.html",
-    "revision": "0336fb89cce1d94a8765b66b25efe513"
+    "revision": "00f6190b4ef1f29498ab26265bddacc5"
   },
   {
     "url": "tag/英语听力/index.html",
-    "revision": "2cc2f21afe0367d9caca70a186d33834"
+    "revision": "b966d20e68abaf7f1759b8ccc72907f1"
   },
   {
     "url": "tag/展览/index.html",
-    "revision": "d530a9369d3d9955e78fa0ff36e79349"
+    "revision": "2db826091690df30c25f0b887cce900e"
   },
   {
     "url": "tag/diffsinger/index.html",
-    "revision": "1fb146f845f34d5db2441015d589d444"
+    "revision": "9e3b57758fbbbd328a3c35b0f13f95ae"
   },
   {
     "url": "tag/gocqhttp - nodejs/index.html",
-    "revision": "e72eff9eef94c6876f6c512c9d61d181"
+    "revision": "2a2e5ad5e5ae0c1ae7606a8dc7c3c606"
   },
   {
     "url": "tag/html/index.html",
-    "revision": "eea9589cd3efaa2ee1ee547b0bcaf483"
+    "revision": "c3f0c9d70a7c859b15393742d470b3c0"
   },
   {
     "url": "tag/index.html",
-    "revision": "c1b1d12f438d431d79ab539eeb607432"
+    "revision": "94d617623e5e1e8fbbbecfecc1b2f121"
   },
   {
     "url": "tag/koishi/index.html",
-    "revision": "b03ae9027fcf895faf2952e2e8fa8da7"
+    "revision": "84df1d60be978e27881e0b866bb7f411"
   },
   {
     "url": "tag/node-json-db/index.html",
-    "revision": "9ac23c06bb3d80e9b9f79fc877c65f7b"
+    "revision": "87c39e06eec8d8e86feb05ed15b451a8"
   },
   {
     "url": "tag/node/index.html",
-    "revision": "1591103464da65f0dc0929bf53b0f602"
+    "revision": "a42cabe3f3f3ed46eefd21fb3cd0de0a"
   },
   {
     "url": "tag/nodejs/index.html",
-    "revision": "699363f9b2cdb4103316bd2cb4f032c0"
+    "revision": "f08a496a3366a54b0dcd66afe69f4e50"
   },
   {
     "url": "tag/oi/index.html",
-    "revision": "2ce8b388643b5cf45246dee46371b84e"
+    "revision": "4b63a648dbe9b1ac88f16bc070600c41"
   },
   {
     "url": "tag/python/index.html",
-    "revision": "394bc18e3c67c22454a4d726c40c7002"
+    "revision": "25a4678759a22f7c66c524fe08db6c8d"
   },
   {
     "url": "tag/qq机器人/index.html",
-    "revision": "a0b6a207250b131127b80b74d003df46"
+    "revision": "096143b4081a2fc8856ccd950b8514b8"
   },
   {
     "url": "tag/ts/index.html",
-    "revision": "7406bdc72d1fffcac512e54cfeaaca25"
+    "revision": "ded4c617eff8f23120ba6a299437baa2"
   },
   {
     "url": "tag/typescript/index.html",
-    "revision": "d3507238bd3f922d1cd6919c2d2fc33d"
+    "revision": "de969c2bb970b5b31144bd4704d87263"
   },
   {
     "url": "tag/vuepress/index.html",
-    "revision": "0e4fa8c0cfdc50ad29b020496261a12f"
+    "revision": "ba00e2476a1c8bce38036d1db109fe16"
   },
   {
     "url": "timeline/index.html",
-    "revision": "46c311c7f919d47f357ff6a3362b0083"
+    "revision": "9493191c863dda7dfbd4bdfd722530fb"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
