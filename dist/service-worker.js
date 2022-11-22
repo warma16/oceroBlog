@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "282e2cf13af35d99f9dbc7371ceaae56"
+    "revision": "bae74b4e9a9814286b6f5d910e6579e6"
   },
   {
     "url": "about/index.html",
-    "revision": "2e7c23b60bc87782cb7e409fe67cbf0a"
+    "revision": "dfde629229600c89f182872905b4080a"
   },
   {
     "url": "assets/css/0.styles.c77e2ca6.css",
@@ -58,40 +58,40 @@ self.__precacheManifest = [
     "revision": "f8c24d3a60771a744b9ce364f1d2533f"
   },
   {
-    "url": "assets/js/14.2cb64f79.js",
-    "revision": "5738596bc67239dc49f215b04960d21d"
+    "url": "assets/js/14.9924d73a.js",
+    "revision": "1795084749bd7407654e333c454ad687"
   },
   {
     "url": "assets/js/15.9be230f2.js",
     "revision": "95bce832382e171953fc3288d3bda513"
   },
   {
-    "url": "assets/js/16.8e4b5184.js",
-    "revision": "e63567a428bd7a5503cc950d11169d79"
+    "url": "assets/js/16.64a0cd15.js",
+    "revision": "432ee78504747e704a8ad00e130fb39b"
   },
   {
-    "url": "assets/js/17.6842e171.js",
-    "revision": "e5264cfea50582ef33c3342a2a43a7d5"
+    "url": "assets/js/17.2812c784.js",
+    "revision": "0171e52930ab723306eb62ecf80aa4fc"
   },
   {
     "url": "assets/js/18.25465617.js",
     "revision": "44794d4b0fc54f10e1fb40e35338780e"
   },
   {
-    "url": "assets/js/19.4e73ad51.js",
-    "revision": "e5a142eb3fa0d6f70d6e5cd4c0da7809"
+    "url": "assets/js/19.c7dde687.js",
+    "revision": "2dcdf59561abd073d0aa08e5d7e3c4a0"
   },
   {
-    "url": "assets/js/20.315057fc.js",
-    "revision": "682d4431894106ec4b2a5161e1008d75"
+    "url": "assets/js/20.7c47c817.js",
+    "revision": "e57e1756043303fbced8e3b5861e23cd"
   },
   {
-    "url": "assets/js/21.83019c55.js",
-    "revision": "49ffa09f235ccc6af8b7e7b96c5062de"
+    "url": "assets/js/21.86bf5128.js",
+    "revision": "42f8bf9f6ba24972449f0d5864c1035d"
   },
   {
-    "url": "assets/js/22.bf877a2f.js",
-    "revision": "a1cdb8f1117c6e82338ed98cf7cbbdf6"
+    "url": "assets/js/22.87440d8c.js",
+    "revision": "b81657d1a10ded3dac6913a52db6bbcf"
   },
   {
     "url": "assets/js/23.12e21131.js",
@@ -130,8 +130,8 @@ self.__precacheManifest = [
     "revision": "ea0f40eff73d3a63aa773c16e31a24e1"
   },
   {
-    "url": "assets/js/app.0f306a91.js",
-    "revision": "51916f848db170f059cdcf6acaa294aa"
+    "url": "assets/js/app.13145a96.js",
+    "revision": "f3c89a3edc77c2ad5cc0e1e05b4a60bc"
   },
   {
     "url": "avatar.png",
@@ -147,63 +147,63 @@ self.__precacheManifest = [
   },
   {
     "url": "blogs/contactCards/2022世界5g大会交换过来的名片集.html",
-    "revision": "46b07add742791838ba43b144195709c"
+    "revision": "7dc35108bd8d6a7b90951199a2d21c7d"
   },
   {
     "url": "blogs/education/高中英语同步练习册外研版听力音频合集.html",
-    "revision": "de3c2613ae811e8a47d622b22f0d342e"
+    "revision": "5024fa45a0971c0f81925c4a6a32441c"
   },
   {
     "url": "blogs/other/yeah.html",
-    "revision": "6b3cd40ffead94de90dfab446b07d9e3"
+    "revision": "7602fce39c58da9702316e5e415300c1"
   },
   {
     "url": "blogs/story/去2022世界5g大会的一些感触.html",
-    "revision": "a467733072001021765294e07452ac99"
+    "revision": "9a4cdcb1354082d0feec8569902c8873"
   },
   {
     "url": "blogs/tec/啊哈算法的学习.html",
-    "revision": "26d4b6426ccd9f3984bfd8adb9c29b61"
+    "revision": "7b1e6d1033392704016e9847203b9019"
   },
   {
     "url": "blogs/tec/神奇的picture标签.html",
-    "revision": "f6fe3ff06693ef41dfadb0bf85e980a2"
+    "revision": "b2004a49bdca0419f45c4599e95e4476"
   },
   {
     "url": "blogs/tec/玩Diffsinger的小记.html",
-    "revision": "c73db653e71b52d013b5e62eef110793"
+    "revision": "96f1daf0fb4c6e33f4e66b7b7bad31c7"
   },
   {
     "url": "blogs/tec/node-json-db的一些坑.html",
-    "revision": "720a9c1f2df626a89b04dcad14a120e4"
+    "revision": "3678b5a4a3889a216e4a349026351a15"
   },
   {
     "url": "blogs/tec/QQ机器人的搭建.html",
-    "revision": "90ad2ca27142e367ae1241fd94591a6c"
+    "revision": "6fc63a1d951146085223368c45952bf2"
   },
   {
     "url": "categories/技术笔记/index.html",
-    "revision": "0a870269928eee5a02d6709278cc5f38"
+    "revision": "660c36481d994de0c15e98b3d8ce4b56"
   },
   {
     "url": "categories/教育相关/index.html",
-    "revision": "419ecd86e013005ab992f275006048b0"
+    "revision": "35f0fc9a3ccc71b2c8ab6d920ae5e029"
   },
   {
     "url": "categories/名片集/index.html",
-    "revision": "92bb59d540e0e94799c5e80a60b8743c"
+    "revision": "49929fbd8b2c55d1d329966486fbb387"
   },
   {
     "url": "categories/日记/index.html",
-    "revision": "f949b665b41e94f382f632274bb737f9"
+    "revision": "a13b155fd1c648cbf647871adba1e160"
   },
   {
     "url": "categories/游记/index.html",
-    "revision": "eadd293bd72846d82d6bda0a208b82ce"
+    "revision": "16a0de5e1b0ff0a155876ddce4841893"
   },
   {
     "url": "categories/index.html",
-    "revision": "faba1c786f6e97700dd157d790083ffd"
+    "revision": "85dcc64a0369945a29fba35b0a478704"
   },
   {
     "url": "FluentDesign/core.css",
@@ -223,7 +223,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "dc435326a20d832f33caa316d6c50e5b"
+    "revision": "2758da25dd033c2a8bdade35bbc223e3"
   },
   {
     "url": "logo.png",
@@ -231,131 +231,131 @@ self.__precacheManifest = [
   },
   {
     "url": "README.en.html",
-    "revision": "7e9cb325f0d71bd084c90d870b26d418"
+    "revision": "954cecf342ce81a00bbe66b00cd66cd8"
   },
   {
     "url": "tag/2022大事件/index.html",
-    "revision": "660fe36592b89291df0aac8b3575bcf0"
+    "revision": "7276dcc22ffb279c51b7d7917a2b7b1f"
   },
   {
     "url": "tag/2022世界5g大会/index.html",
-    "revision": "156b78a0720e13255b4842c8336e3d58"
+    "revision": "b5d30c2972ef760b4441be0fb0f58929"
   },
   {
     "url": "tag/5G/index.html",
-    "revision": "ab0bd5dbff8d8f23f8ae0dc11011c844"
+    "revision": "67fc083a65ed3a78f26bbc30077195e5"
   },
   {
     "url": "tag/啊哈/index.html",
-    "revision": "7165322038a0f8e8248c942258fdd006"
+    "revision": "d66cd3a8884be3c3d295eb954cd495b8"
   },
   {
     "url": "tag/啊哈磊/index.html",
-    "revision": "17f402b10ebf536a686c73739c390df1"
+    "revision": "f55a630e697e1698aff0625686aa8930"
   },
   {
     "url": "tag/高中/index.html",
-    "revision": "f521387d80cda5a6d84d92b59efad4ba"
+    "revision": "d9836d8e4409f65e50095c96183e7066"
   },
   {
     "url": "tag/歌声合成/index.html",
-    "revision": "037f0f35575f15b998b9eb134d9d6120"
+    "revision": "bdc9164cd51b7e8bcc3da72396dfa3f3"
   },
   {
     "url": "tag/哈尔滨/index.html",
-    "revision": "8bb479b080f82832ece461af51707397"
+    "revision": "a983a056492eb4c5db10312be8f50287"
   },
   {
     "url": "tag/科技展/index.html",
-    "revision": "b06c8de06d1822f3f82777d0c3b2770e"
+    "revision": "0de82c9a77fe0dc5784ef0888162a57b"
   },
   {
     "url": "tag/名片/index.html",
-    "revision": "4747d22ad7a0a84cd0659cf2b46efc15"
+    "revision": "d1aa2e5f2be9e7bdc10ea4eeede9b457"
   },
   {
     "url": "tag/趣事小记/index.html",
-    "revision": "aa71ad866c13e1390454cc8d06f418f9"
+    "revision": "3fea3ae4e804fb69ab705dd6ab2d84fb"
   },
   {
     "url": "tag/算法/index.html",
-    "revision": "e7fdc588c1d209da066ebc1859e1fddc"
+    "revision": "f1a00ec2fd84ff04b00a298e025c09d9"
   },
   {
     "url": "tag/听力/index.html",
-    "revision": "43eea60061b0ba3e51cbce850419ab6d"
+    "revision": "2e83afe9c738a6254eacdf7272f73b93"
   },
   {
     "url": "tag/外研版/index.html",
-    "revision": "fd65d0a623ac111c8034589dbc3549aa"
+    "revision": "83377582ffac7f635d14abda43677067"
   },
   {
     "url": "tag/英语/index.html",
-    "revision": "4f2df47e73c501f240c922ce0c1eb3b5"
+    "revision": "28124cebe117280a88b34d386ca3f41c"
   },
   {
     "url": "tag/英语听力/index.html",
-    "revision": "5f3df1e4653da64bec6dbeeaec9da0b1"
+    "revision": "ab16b247e15996b878b2053ec1899bd5"
   },
   {
     "url": "tag/diffsinger/index.html",
-    "revision": "8647bf887df5b0017de94f8ecdd3d63e"
+    "revision": "ebdb3cf39812bfc4d37e2a46baacc2c6"
   },
   {
     "url": "tag/gocqhttp - nodejs/index.html",
-    "revision": "5040b4060a92ce6f2a69f509fb2895e4"
+    "revision": "1e6daec8e917f20164584274e68add36"
   },
   {
     "url": "tag/html/index.html",
-    "revision": "40d38d514274e9e8cf0166bf1d2f73c1"
+    "revision": "0e0c8e7ac21dd0d24bcb4894373fea0c"
   },
   {
     "url": "tag/index.html",
-    "revision": "d9ba094cae7207398bc06089507f2514"
+    "revision": "d5fd2bb2ce479d67d7f4cae4d81406c1"
   },
   {
     "url": "tag/koishi/index.html",
-    "revision": "d6ab15872f3116d67f64326f94a4cac4"
+    "revision": "fec9acfeabaf11b25d23676f14cd1f04"
   },
   {
     "url": "tag/node-json-db/index.html",
-    "revision": "96616e2ac164086919b47b8718157ed0"
+    "revision": "249d215ff9a514ef9e761962cde97c8f"
   },
   {
     "url": "tag/node/index.html",
-    "revision": "23b18b09b2a21535985bdf3691024806"
+    "revision": "4794591203b3128c560eae7c1918462f"
   },
   {
     "url": "tag/nodejs/index.html",
-    "revision": "e552a7d7c36dfd1dbf91f47e491c3a9f"
+    "revision": "bdef4e1543db6039fa8a361aa157021a"
   },
   {
     "url": "tag/oi/index.html",
-    "revision": "6aaaee09d9c1a8dc071af99004084ef1"
+    "revision": "d128fd54dc47cb9a3aa0793ce1ca6706"
   },
   {
     "url": "tag/python/index.html",
-    "revision": "96027241d0ec59d7e334a9164305c7ef"
+    "revision": "105913acaab3e0ab3735fa34193f1d83"
   },
   {
     "url": "tag/qq机器人/index.html",
-    "revision": "eaefe1ee095ba2987301704550f91cf9"
+    "revision": "14e4eddb79b0e9795df9602e050503da"
   },
   {
     "url": "tag/ts/index.html",
-    "revision": "90a006a6e82ff304f6790823b890fa8e"
+    "revision": "e3f94a68b990109559833a09f7cb2dce"
   },
   {
     "url": "tag/typescript/index.html",
-    "revision": "b499c4f37f579e6f8d7fce6f91bc4842"
+    "revision": "f373f3f7e840f319cc91c22241b53b20"
   },
   {
     "url": "tag/vuepress/index.html",
-    "revision": "fb093f5a6a2df09c8077787a4f34a0f2"
+    "revision": "83dbb2c7a9c2d8afc92ecc5bee5dd976"
   },
   {
     "url": "timeline/index.html",
-    "revision": "444665535064f5ed0464b43965b2f583"
+    "revision": "c353b965511d854ed7029e271ccdc63b"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
