@@ -134,7 +134,13 @@ module.exports = {
         "desc":"随便写写，主要分享程序相关",
         "logo":"https://kifuan.me/avatar.jpg",
         "link":"https://blog.kifuan.me/?from=oceroBlog"
-      }
+      },
+      {
+        "title":"Eason's Home",
+        "desc":"一个科技少年的小天地",
+        "logo":"https://oceroimagestore.metalstudio.top/img/20221217200748.png",
+        "link":"https://krbug.asia/?from=oceroBlog"
+      },
     ],
    /* "valineConfig": {
       "appId": "xxx",// your appId
