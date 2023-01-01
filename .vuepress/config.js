@@ -54,6 +54,7 @@ module.exports = {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?c001f53872329918b27f32dc8b9f5a1e";
       var s = document.getElementsByTagName("script")[0]; 
+      console.log(s.parentNode)
       s.parentNode.insertBefore(hm, s);
     })();
     
