@@ -1,5 +1,6 @@
 
 # Publish to GitHub Pages
+# githubactionspushtoken is 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
 cd .vuepress/dist
 git init
 git config user.name "warma16"

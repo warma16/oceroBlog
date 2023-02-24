@@ -61,6 +61,8 @@ jobs:
       
       #提交到main分支里面
       - name: Commit changes
+        env:
+          TOKEN: ${{secrets.GithubActionsPushKey}}
         run: yarn run commit
       # Runs a set of commands using the runners shell
       - name: Finished
