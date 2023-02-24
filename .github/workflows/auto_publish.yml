@@ -63,7 +63,7 @@ jobs:
       - name: Commit changes
         env:
           TOKEN: ${{secrets.GithubActionsPushKey}}
-        run: yarn run commit
+        run: yarn run actionsPush
       # Runs a set of commands using the runners shell
       - name: Finished
         run: |
