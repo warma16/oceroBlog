@@ -10,9 +10,9 @@ git add -A
 time3=$(date "+%Y-%m-%d%H:%M:%S")
 #info字符串等于prefix的字符串形式加上time3的字符串形式
 info="[vuepress]自动构建，构建时间: $time3"
-
+git branch
 git commit -m "$info"
-git push --force "https://${TOKEN}@github.com/warma16/oceroBlog.git" "master:main"
+git push --force "https://${TOKEN}@github.com/warma16/oceroBlog.git" "main:main"
  
  
 # Cleanup
