@@ -79,7 +79,7 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-scripts
+
 
 .idea
 
