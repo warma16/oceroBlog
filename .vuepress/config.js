@@ -149,6 +149,12 @@ module.exports = {
         "logo":"https://oceroimagestore.metalstudio.top/img/20221217200748.png",
         "link":"https://krbug.asia/?from=oceroBlog"
       },
+      {
+        "title":" wky32768",
+        "desc":" wky32768的博客",
+        "logo":"https://pic.cnblogs.com/face/1450018/20190422160951.png",
+        "link":"https://www.cnblogs.com/wky32768/?from=oceroBlog"
+      },
     ],
    /* "valineConfig": {
       "appId": "xxx",// your appId
