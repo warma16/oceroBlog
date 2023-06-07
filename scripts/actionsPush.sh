@@ -6,6 +6,7 @@ cd .vuepress/dist
 git init
 git config user.name "warma16"
 git config user.email "metalstudio@126.com"
+git checkout -b tem
 git add -A
 #info 的格式是 [vuepress]自动构建，构建时间:{year}/{month}/{date} {hours}:{minutes}:{seconds}
 time3=$(date "+%Y-%m-%d%H:%M:%S")
@@ -13,7 +14,7 @@ time3=$(date "+%Y-%m-%d%H:%M:%S")
 info="[vuepress]自动构建，构建时间: $time3"
 git branch
 git commit -m "$info"
-git push --force "https://${TOKEN}@github.com/warma16/oceroBlog.git" "master:main"
+git push --force "https://${TOKEN}@github.com/warma16/oceroBlog.git" "tem:main"
  
  
 # Cleanup
