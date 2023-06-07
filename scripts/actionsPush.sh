@@ -13,7 +13,7 @@ time3=$(date "+%Y-%m-%d%H:%M:%S")
 info="[vuepress]自动构建，构建时间: $time3"
 git branch
 git commit -m "$info"
-git push --force "https://${TOKEN}@github.com/warma16/oceroBlog.git" "main:main"
+git push --force "https://${TOKEN}@github.com/warma16/oceroBlog.git" "master:main"
  
  
 # Cleanup
