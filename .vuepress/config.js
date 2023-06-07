@@ -156,7 +156,7 @@ module.exports = {
         "link":"https://www.cnblogs.com/wky32768/?from=oceroBlog"
       },
     ],
-   /* "valineConfig": {
+   /* his"valineConfig": {
       "appId": "xxx",// your appId
       "appKey": "xxx", // your appKey
       "avatar": "", //
