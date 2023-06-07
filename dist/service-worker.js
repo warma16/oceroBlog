@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "17abae1264f7e61b355ee8803fa5f894"
+    "revision": "35034b8c027cb5a5a6f52a73fb9a70b9"
   },
   {
     "url": "about/index.html",
-    "revision": "817cbd9f398d284937951f4656cd1980"
+    "revision": "d7e726884311c94164457681af8f07c9"
   },
   {
     "url": "assets/css/0.styles.d26d3be7.css",
@@ -150,8 +150,8 @@ self.__precacheManifest = [
     "revision": "74616a3bc6b5d72a887db3fa452159eb"
   },
   {
-    "url": "assets/js/app.3985fbe5.js",
-    "revision": "61dd1a1c903b77d15ef15656ad55b385"
+    "url": "assets/js/app.ca358c81.js",
+    "revision": "b36d2c11e7bb507375254884b523bf51"
   },
   {
     "url": "avatar.png",
@@ -167,83 +167,83 @@ self.__precacheManifest = [
   },
   {
     "url": "blogs/contactCards/2022世界5g大会交换过来的名片集.html",
-    "revision": "e7f6406aca2369316d60d8235aff89ee"
+    "revision": "97fc423ef1ce0f48629b2d3162f7c800"
   },
   {
     "url": "blogs/education/英语周报听力强化训练音频.html",
-    "revision": "42c770f85d6cd4c41d59d5b26cd941e4"
+    "revision": "7a5383a8f291777fbb80828d096da991"
   },
   {
     "url": "blogs/education/高中英语同步练习册外研版听力音频合集.html",
-    "revision": "0ceffa329f0d8574ca9999c2d0346090"
+    "revision": "3cda46091932b95aa1ccef5d0b3251e6"
   },
   {
     "url": "blogs/essay/准备参加叶圣陶征文的短文.html",
-    "revision": "2c965b99d16a3bd6d537262599113f6b"
+    "revision": "a2f334ade574b622de1aed5c40eddf89"
   },
   {
     "url": "blogs/games/Rizline试玩感触.html",
-    "revision": "c7f00c601283dfdc36217adfdb9f1d57"
+    "revision": "74b7857890f6efd1a80b0eae2c9391a9"
   },
   {
     "url": "blogs/other/yeah.html",
-    "revision": "c345dcb62c61dc9e69665b6972831ff7"
+    "revision": "46d34f67202e75c63b57e86930ff72e5"
   },
   {
     "url": "blogs/other/疫情从严防到突然放开的小日记.html",
-    "revision": "6f74978b2aad7cb5376d4dcadc89050c"
+    "revision": "ff7ad11e54d6ffad4ccd20352b433ffa"
   },
   {
     "url": "blogs/story/去2022世界5g大会的一些感触.html",
-    "revision": "f60b99bc6a97035502e37020965ef638"
+    "revision": "aa96e3dce2b277b1d9dab97e556d9c6a"
   },
   {
     "url": "blogs/tec/node-json-db的一些坑.html",
-    "revision": "7ff60b352b25536a738ca3249c411e6a"
+    "revision": "4332e8b2ea1ad7fb1f367f98a7dd30a9"
   },
   {
     "url": "blogs/tec/QQ机器人的搭建.html",
-    "revision": "bf1459aed6254612b374e1d6a5229298"
+    "revision": "f8781c147367cf4ed9f68771c6d0d73c"
   },
   {
     "url": "blogs/tec/啊哈算法的学习.html",
-    "revision": "5f6ada21a2a776ff1dd6c38145ab4300"
+    "revision": "205528bc31ab34b5448f8c565d6c748e"
   },
   {
     "url": "blogs/tec/玩Diffsinger的小记.html",
-    "revision": "b56c886859086054ea1b44853cff84a3"
+    "revision": "3ee506f2d5587a9be7b83f43dc4a8ce0"
   },
   {
     "url": "blogs/tec/神奇的picture标签.html",
-    "revision": "a2de3abfd8ee6741cc975161fb3edf76"
+    "revision": "1cc4be83f46a0904245619cde812f3d1"
   },
   {
     "url": "categories/index.html",
-    "revision": "f46671336186045349c9bf9ccdfcca9e"
+    "revision": "0b33a48c49244937e82ea3b3e97b3a7c"
   },
   {
     "url": "categories/名片集/index.html",
-    "revision": "dff3b99e01f5fe90f936fec0add4e023"
+    "revision": "b2b6a7810800d4455ec9ff2f9bc0cd0e"
   },
   {
     "url": "categories/技术笔记/index.html",
-    "revision": "ba605bea0209690b27353122b4a59436"
+    "revision": "50f3d28afecccb4587b45887f4c667da"
   },
   {
     "url": "categories/教育相关/index.html",
-    "revision": "816936944d915625060d29b633b2bb3f"
+    "revision": "d44ccd3614eb9fb8094fff78b9f7a0c9"
   },
   {
     "url": "categories/日记/index.html",
-    "revision": "41669905054243cec3f05fef55b5f8c5"
+    "revision": "aa283c6e993cd7f93ef05c9d9a6de1f6"
   },
   {
     "url": "categories/游记/index.html",
-    "revision": "3cac5b3b71b7b3bc9f3b3934896ee399"
+    "revision": "67e4bbb9b3fd3dfc29f01743e78e70c1"
   },
   {
     "url": "categories/音游/index.html",
-    "revision": "134d2d4c51d621f50de4f4bbef419edf"
+    "revision": "e06da1b574a0684214295147fabe4df2"
   },
   {
     "url": "FluentDesign/core.css",
@@ -263,7 +263,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "bafd88feb64d037846ac42c24cf9faec"
+    "revision": "7586a5883b4484dde6f2bae271f24d91"
   },
   {
     "url": "logo.png",
@@ -271,175 +271,175 @@ self.__precacheManifest = [
   },
   {
     "url": "README.en.html",
-    "revision": "bc18d953c7556e2800e1040b4dcc42ff"
+    "revision": "b4ebdbaaa2680d8111a6cf7cf2929015"
   },
   {
     "url": "tag/2022世界5g大会/index.html",
-    "revision": "82adf80b73722b5e3ad5e76a12866ad9"
+    "revision": "176deef8b823673e98fd7b2c2b115f46"
   },
   {
     "url": "tag/2022大事件/index.html",
-    "revision": "da6aff1e33597d3f887b3f714195af74"
+    "revision": "ea1f330840760da0131c46b68e8f5a66"
   },
   {
     "url": "tag/5G/index.html",
-    "revision": "fd6c73de7c61279274d6661083d0fff8"
+    "revision": "95cf596ffda8a5d476f505788fbb4634"
   },
   {
     "url": "tag/diffsinger/index.html",
-    "revision": "529938b3ddc05385b1679548222412cb"
+    "revision": "e0cacc04b75214657f9418f62c871453"
   },
   {
     "url": "tag/gocqhttp - nodejs/index.html",
-    "revision": "271e65751f2dc7943d0fa9ece537c581"
+    "revision": "d57688ba2e17d97874a337ba035c0ee1"
   },
   {
     "url": "tag/html/index.html",
-    "revision": "431394275e821a9c9dd3c6a869c85afa"
+    "revision": "a31f6ac6d38bbbf5b363ee6a5f81df35"
   },
   {
     "url": "tag/index.html",
-    "revision": "86f75c1869d25cbb257502af0a33be0b"
+    "revision": "ddacceb1092475647342b0adea6ddec0"
   },
   {
     "url": "tag/koishi/index.html",
-    "revision": "3a15a293ca974a844720b46f032f590c"
+    "revision": "e1273ef841ecef347b9e2ee265d3f557"
   },
   {
     "url": "tag/node-json-db/index.html",
-    "revision": "cc83b0345d2128a5c4435ebd75e32354"
+    "revision": "30331a6a055e4aff888b2d072e87860c"
   },
   {
     "url": "tag/node/index.html",
-    "revision": "e36ea2b9aa85537b02b8f8e100d1d799"
+    "revision": "c38d5c18295055ab838f5b901fead85b"
   },
   {
     "url": "tag/nodejs/index.html",
-    "revision": "77c2b3db94f809c39753f96adc99a0f3"
+    "revision": "c24c5b601d4a021e3bcc363b83428184"
   },
   {
     "url": "tag/oi/index.html",
-    "revision": "d3ba1a78c543b5ae49ef40fd9cae095f"
+    "revision": "709e1eeab8aa57e586566fc5e983be36"
   },
   {
     "url": "tag/Pigeon Games/index.html",
-    "revision": "6ec046fe6bddec8fc24627a385d280ad"
+    "revision": "1bedc81889e07b08c0a56aaab4dda535"
   },
   {
     "url": "tag/python/index.html",
-    "revision": "379c1ca28166cd43844839354ff7baa7"
+    "revision": "b2d537cbc7f965203382b14a0d52274a"
   },
   {
     "url": "tag/qq机器人/index.html",
-    "revision": "53b2366a31c0baeac6dec8a75d4983b4"
+    "revision": "1ff4d5289ea57f8ee77e972bfdf847eb"
   },
   {
     "url": "tag/rizline/index.html",
-    "revision": "62cce84251fdc44e334f0dc0ed8734cf"
+    "revision": "93404a60d0ba7454d6bbf2bda98eb5ce"
   },
   {
     "url": "tag/ts/index.html",
-    "revision": "ce74d50eeddbccacbb656e3113e32ed9"
+    "revision": "56d4b686f7c184c1501598d053d1aeb9"
   },
   {
     "url": "tag/typescript/index.html",
-    "revision": "ed07e7c1d7f4d59c8f69ff65003b9b82"
+    "revision": "11b1c7f55a33fcd9c41e73f06a44c39b"
   },
   {
     "url": "tag/vuepress/index.html",
-    "revision": "c0c6651a34e99d61d1a1522b88d36a84"
+    "revision": "c3f4f261425f3152d36ab267ab4fe5cb"
   },
   {
     "url": "tag/作文/index.html",
-    "revision": "3900af5625dea4a1664a843f6a66cb2d"
+    "revision": "b6f34345bd5d8058bcda66b8236395a6"
   },
   {
     "url": "tag/养生/index.html",
-    "revision": "ab434c3aceb0e6e8fd8c30ea791e5755"
+    "revision": "3650eae05a6cb87deeaa324f1000d957"
   },
   {
     "url": "tag/名片/index.html",
-    "revision": "ebf4d52461cf80eeaecc91c57bd6aa0a"
+    "revision": "793f216f22e25e6cf35c50d098d56f8e"
   },
   {
     "url": "tag/听力/index.html",
-    "revision": "fef88790051e91ceda1f3c5f1b89eb95"
+    "revision": "2ba2f7a0d13a426bae7330fad6d03e83"
   },
   {
     "url": "tag/哈尔滨/index.html",
-    "revision": "fbf2bd2f63bdfcfa3c2db271700bdde9"
+    "revision": "23c7c9b399ab4d03bfd1e22db9032f5e"
   },
   {
     "url": "tag/啊哈/index.html",
-    "revision": "34292cf73631bcfa783759aefc25a963"
+    "revision": "c6758651eb9dda7f0cda0b6e18014e16"
   },
   {
     "url": "tag/啊哈磊/index.html",
-    "revision": "a0e5e498ce65ddf709e868dc56f9fb27"
+    "revision": "e9c5f1ee04eb3ce296b586bd5278cf3c"
   },
   {
     "url": "tag/外研版/index.html",
-    "revision": "10bd15bce2ea96b81c4387b93fbdcad7"
+    "revision": "97de7bdbe1e4085c5b338169b56f8e08"
   },
   {
     "url": "tag/文章/index.html",
-    "revision": "7d620ebb56cbf25f36ab38b6a520b971"
+    "revision": "89d47ae2af779ac3d0631b47773c0035"
   },
   {
     "url": "tag/歌声合成/index.html",
-    "revision": "aa5e55614135f4258e0d69b824bf695a"
+    "revision": "a5f7ba7032c71258adf1ab12ef71f4d8"
   },
   {
     "url": "tag/疫情/index.html",
-    "revision": "9172109481e606a84c445fceb39b1532"
+    "revision": "8256f36c04a742b7610deb6f17528b16"
   },
   {
     "url": "tag/科技展/index.html",
-    "revision": "4c78fc41de6751714a1c48b63ec85e9d"
+    "revision": "e164887e4b46568701d38a818c9760ac"
   },
   {
     "url": "tag/穴位/index.html",
-    "revision": "77078867e463665883d5efea774f637e"
+    "revision": "c2d7b9618a5fc00cb3ae3eccdd1b9494"
   },
   {
     "url": "tag/算法/index.html",
-    "revision": "cef79c206414a3b1ea6253708c792f60"
+    "revision": "fedd8ffdb879fbf1822c24db8e8a5963"
   },
   {
     "url": "tag/英语/index.html",
-    "revision": "0dcdab6438f9eaa756ba0dda647d883b"
+    "revision": "8169b2e24effda97d940444d47338d93"
   },
   {
     "url": "tag/英语听力/index.html",
-    "revision": "3dea71da69eef26bc8d963e72af9fe1d"
+    "revision": "7ed8ff2b8c444766fdfcbc79a77ddb33"
   },
   {
     "url": "tag/英语周报/index.html",
-    "revision": "c5a4cd5159cff5549a89efef21da834d"
+    "revision": "b231a50c43ef609b86536eb8e83e61c5"
   },
   {
     "url": "tag/趣事小记/index.html",
-    "revision": "e5652330596e29727401e2ec91962813"
+    "revision": "1e5ad5623d3f7625424b5e028bc8ae5d"
   },
   {
     "url": "tag/音游/index.html",
-    "revision": "63260a89875bfa65ba1dfe745196fa3b"
+    "revision": "e796e51193422b725a38eaf89d25f826"
   },
   {
     "url": "tag/高中/index.html",
-    "revision": "c24b4b59c5dbfcdc239e544bdea8d1cd"
+    "revision": "a8b5ecd8064ff1c99eb1fae284c98b3e"
   },
   {
     "url": "tag/鸽游/index.html",
-    "revision": "b001218567b29834c923b19e493c6a76"
+    "revision": "a816261c4158f8bafc1502dd33038ccb"
   },
   {
     "url": "test.html",
-    "revision": "ea9bc03dd1731dd0cbf32f1800c63ec6"
+    "revision": "34b7a7ace224fb1ee34706702aa9f16a"
   },
   {
     "url": "timeline/index.html",
-    "revision": "54febe9d83bf653a8c3ce6e7f1c5f633"
+    "revision": "ffe814a2489a96d0c6152b53dfee1819"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
