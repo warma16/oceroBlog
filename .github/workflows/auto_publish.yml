@@ -46,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: /home/runner/work/oceroBlog/oceroBlog/.vuepress/dist  # 根据您的VuePress构建输出目录调整
+          path: ./dist  # 根据您的VuePress构建输出目录调整
 
   deploy:
     environment:
