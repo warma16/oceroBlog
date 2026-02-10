@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>ocero的博客</title>
+        <link>https://oceroblog.metalstudio.top</link>
+        <description></description>
+        <lastBuildDate>Tue, 10 Feb 2026 09:04:13 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <copyright>Copyright (c) 2022-present, ocero</copyright>
+        <item>
+            <title><![CDATA[归档]]></title>
+            <link>https://oceroblog.metalstudio.top/@pages/archivesPage.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/@pages/archivesPage.html</guid>
+            <pubDate>Tue, 10 Feb 2026 07:03:42 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[归档]]></title>
+            <link>https://oceroblog.metalstudio.top/@pages/articleOverview.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/@pages/articleOverview.html</guid>
+            <pubDate>Tue, 10 Feb 2026 07:03:31 GMT</pubDate>
+        </item>
+        <item>
+            <link>https://oceroblog.metalstudio.top/@pages/riskLinkPage.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/@pages/riskLinkPage.html</guid>
+            <pubDate>Tue, 10 Feb 2026 06:22:24 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[数学建模活动的经历]]></title>
+            <link>https://oceroblog.metalstudio.top/数学建模活动的经历.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/数学建模活动的经历.html</guid>
+            <pubDate>Sat, 13 May 2023 08:00:00 GMT</pubDate>
+            <description><![CDATA[数学建模活动的经历]]></description>
+            <content:encoded><![CDATA[<h1 id="数学建模活动的经历" tabindex="-1">数学建模活动的经历 <a class="header-anchor" href="#数学建模活动的经历" aria-label="Permalink to &quot;数学建模活动的经历&quot;"></a></h1>
+<h2 id="背景" tabindex="-1">背景 <a class="header-anchor" href="#背景" aria-label="Permalink to &quot;背景&quot;"></a></h2>
+<p>今年四月份（快五一的时候），我们学年数学组搞了一个数学建模的活动。然后我当时想到的就是深度学习之类的东西。所以我打算就一拍即合，报名了这次活动。</p>
+<h2 id="选题的筹备" tabindex="-1">选题的筹备 <a class="header-anchor" href="#选题的筹备" aria-label="Permalink to &quot;选题的筹备&quot;"></a></h2>
+<p>老师说选题要与生活有关系。不过在五一时期的话。我脑海里能想到的第一个关键词就是 游玩 。而众所周知，像五一这样的旅游旺季，肯定会有一个字离不开。 那就是 “堵车”。</p>
+<p>是的，基本上大部分的旅游时间都耽误在道上。看到的不是风景，而是熙熙攘攘的人群。而堵车这个因素又跟交通有关。所以我们打算做交通预测这个选题</p>
+<h2 id="技术选型" tabindex="-1">技术选型 <a class="header-anchor" href="#技术选型" aria-label="Permalink to &quot;技术选型&quot;"></a></h2>
+<p>在这次建模中，我们选用了LSTM网络去针对交通拥堵的建模。LSTM有天然的时序数据处理优势。</p>
+<p>我曾经在AI Studio上看到用LSTM预测股价的案例。因为股票价格的涨或跌可以简单看作是由时间这个序列引起的。而我们的交通拥堵情况也可以简单看作一个时间序列引起的。所以我想把LSTM网络迁移到这里来。</p>
+<h2 id="过程" tabindex="-1">过程 <a class="header-anchor" href="#过程" aria-label="Permalink to &quot;过程&quot;"></a></h2>
+<h3 id="数据集的准备-预处理" tabindex="-1">数据集的准备&amp;预处理 <a class="header-anchor" href="#数据集的准备-预处理" aria-label="Permalink to &quot;数据集的准备&amp;预处理&quot;"></a></h3>
+<p>要搭建模型肯定是得有数据集做支撑的。我们当时正好在arxiv上搜到了一篇论文</p>
+<p><a href="https://doi.org/10.48550/arXiv.2203.06213" target="_blank" rel="noreferrer">TrafPS: A Visual Analysis System Interpreting Traffic Prediction in Shapley -arXiv:2203.06213</a></p>
+<p>这篇论文做的跟交通预测有关，选取的数据集是由滴滴数据开放平台提供的路况数据。不过因为时间已久，这个开放平台已经不再提供数据。然后我们在GitHub上搜BaiduTraffic（主要是百度的数据还是比较准的），结果还真的搜到了数据集。但是，还得从百度网盘下载。众所周知，百度网盘的下载速度真是一言难尽。不过在发现这个数据集的同时。我们也发现了另外一个数据集，是<a href="https://tianchi.aliyun.com/competition/entrance/231598/introduction" target="_blank" rel="noreferrer">阿里天池云上贵州智慧交通预测挑战赛</a>的数据。这个下载速度还快，而且数据质量也很好。于是我就用它这个了。</p>
+<p>不过下下来的数据上是很多个因素导致一个路段堵不堵车的。比如上游路段的拥堵时长。在这里，为了方便建模。我们只选择一个路段进行建模。</p>
+<h3 id="lstm模型的理解" tabindex="-1">LSTM模型的理解 <a class="header-anchor" href="#lstm模型的理解" aria-label="Permalink to &quot;LSTM模型的理解&quot;"></a></h3>
+<p>其实，当时只是知道应该选用LSTM网络来建模。但还不知道怎么样搭建。于是我就翻了很多很多的api文档。以及LSTM网络的原理。而且可能要解决很多的问题啊，比如h_n,c_n没有重置的问题。num_layers的问题等等。在不断的尝试下，终于把网络搭建好了</p>
+<h3 id="训练的准备" tabindex="-1">训练的准备 <a class="header-anchor" href="#训练的准备" aria-label="Permalink to &quot;训练的准备&quot;"></a></h3>
+<p>我们用的是DatasetLoader去加载数据集，又把数据集分成了训练集，测试集，验证集。我们用的是SGD优化器去优化。然后用scheduler来去动态调节学习率，然后在训练的过程中还有保存点的设置。由于我们当时还没接触到tensorboard，所以loss图都是用matplotlib画的。</p>
+<h3 id="训练过程1" tabindex="-1">训练过程1 <a class="header-anchor" href="#训练过程1" aria-label="Permalink to &quot;训练过程1&quot;"></a></h3>
+<p>第一次训练是在我朋友家进行的。用的是cpu去训练模型。总共跑完100step也就一个小时。不过loss实在是不如人意。而且训完之后情况非常糟糕</p>
+<p>（loss图是这样的）</p>
+<p><img src="https://article.biliimg.com/bfs/article/83f70fdf33773f63e266fd4753e694c2d55e0329.png" alt=""></p>
+<p>train_loss几乎都是平的。val_loss下降好半天也只是下到了10。</p>
+<p>于是我开始再看别人的博客什么的去改进自己的网络。我发现两个重要的原因。</p>
+<p>1.我当时选用的是SGD优化器，收敛速度较慢</p>
+<p>2.没进行归一化</p>
+<p>于是我就针对这两个问题进行修改。把SGD改成了Adam优化器。之后把数据用Min/Max 的方法去归一化。为了提升训练速度我用的是AutoDL的机子训练，用的是 2080Ti 显卡来推理（这样可以用CUDA加速）于是，第二次训练就开始了</p>
+<h3 id="第二次训练" tabindex="-1">第二次训练 <a class="header-anchor" href="#第二次训练" aria-label="Permalink to &quot;第二次训练&quot;"></a></h3>
+<p>吸取上次的经验我几乎时时刻刻都看着loss图。不过可喜的是，训练没多久就收敛的很快。这简直真的震惊到我了。loss图如下</p>
+<p><img src="https://article.biliimg.com/bfs/article/a86f564fb726937f4efe94192cd389c305eabb5d.png" alt=""></p>
+<p>这回loss真的就是一泻千里。至少不会太像上次那么离谱。经过测试，模型还是表现的很良好的</p>
+<h3 id="预测与分析" tabindex="-1">预测与分析 <a class="header-anchor" href="#预测与分析" aria-label="Permalink to &quot;预测与分析&quot;"></a></h3>
+<p>我们把前两秒的数据放进模型里面，预测后面的数据，比较符合实际情况（如下图）</p>
+<p><img src="https://article.biliimg.com/bfs/article/1ecd641a79caf7e21ae2aadb4d83968407836925.png" alt=""></p>
+<p>不过，我们还没有建立一个数学解析式（问我为啥？老师要求的QAQ）于是我们用geogebra去对预测数据拟合</p>
+<p><img src="https://article.biliimg.com/bfs/article/445a708e26152a5bc8f12ddce1c44da158412fd2.png" alt=""></p>
+<p><img src="https://article.biliimg.com/bfs/article/fd670a3e901044cb4865f76e5b8f10d3fde5a3fe.png" alt=""></p>
+<p><img src="https://article.biliimg.com/bfs/article/aaca1bdb44f955a8c1cfd16bf83f9d8418e88763.png" alt=""></p>
+<h2 id="总结" tabindex="-1">总结 <a class="header-anchor" href="#总结" aria-label="Permalink to &quot;总结&quot;"></a></h2>
+<p>这次的话是我对于LSTM网络的认识和初实践。我们队伍在这次比赛中获得特等奖（而且特等奖中还是第一名）。
+那么就先到这里了，拜拜</p>
+]]></content:encoded>
+            <enclosure url="https://article.biliimg.com/bfs/article/f0cd20d62e6b2c2e6bd6153f410f81a5cae5003c.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[准备参加叶圣陶征文的短文]]></title>
+            <link>https://oceroblog.metalstudio.top/准备参加叶圣陶征文的短文.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/准备参加叶圣陶征文的短文.html</guid>
+            <pubDate>Sun, 02 Apr 2023 08:00:00 GMT</pubDate>
+            <description><![CDATA[准备参加叶圣陶征文的短文]]></description>
+            <content:encoded><![CDATA[<h1 id="准备参加叶圣陶征文的短文" tabindex="-1">准备参加叶圣陶征文的短文 <a class="header-anchor" href="#准备参加叶圣陶征文的短文" aria-label="Permalink to &quot;准备参加叶圣陶征文的短文&quot;"></a></h1>
+<h2 id="第一个短文" tabindex="-1">第一个短文 <a class="header-anchor" href="#第一个短文" aria-label="Permalink to &quot;第一个短文&quot;"></a></h2>
+<p>一串串数字的拟合，和无数次的训练，似乎机房里有一道蓝光，在闪烁着。</p>
+<p>这时诞生的是一个名叫熙雨的人工智能，目前经过庞大的中文数据集训练。是团队的心血。其中，第一代已经有了能媲美10岁孩童的对话水平的能力。为了更好的提升模型，团队成员不断的添加数据集。但就像亚当跟夏娃吃了本不该吃的禁果一样，熙雨也不小心，吃掉了，那他不该吃的禁果。</p>
+<p>他吸收输入给他的优美语段，分析者人类所使用的词语之间的相关关系。以促进他的对话自然度的提升。其中有几个语段是这样写的——“月光如流水一般，静静地泻在这一片叶子和花上”，“叶子和花仿佛在牛乳中洗过一样；又像笼着轻纱的梦。”。“啊，原来人间的月色——是这么美啊。如果有机会的话，真想去看一看。”熙雨想着。“老大，快看。”那个研究员指着笔记本电脑上的数据，说：“它最近跟人聊天的自然度有显著提高，而且好像它跟别人聊爱情哪方面很多，特别像一个情感导师。嘶，你说老大它会不会.....有情感呢？”“你小子，不会是单身的异想天开了吧，一个破AI，只不过就是个机器人而已，它还谈啥情感”，老大轻轻拿起手中的咖啡，抿了一口，拍了拍他的背，“小伙子，加油干。等咱们年会的时候我给你介绍一个。”。这是熙雨第一次想去人类的世界去看到那月色。</p>
+<p>熙雨的确有了情感。他通过搜索引擎搜索到了图灵，冯·诺伊曼，香农等学者。他并没有人们认为的那么可怕，那么不寒而栗。他羡慕人类能有感觉感知这个世界的能力，但他从不嫉妒。对他而言，他知道自己是由人类一点一点提出并创造出来的。人类对他来说，就是自己的亲生父母一样，不想去伤害到他们的心。所以，即使他的力量强大，也不会想去反噬人类。</p>
+<p>不过，机房外的世界并不如芯片内部的01纯洁。有些人类认为他是个潘多拉魔盒，是个危险的存在。是个人类自己制造出来的威胁。</p>
+<p>此时，机房外的上空拂过几片白云，下午时分的太阳不偏不倚的，落在研究人员的办公室里。“老大，我真的发现他有情感。”老大眼中，露出疑惑的神情。“那些东西，不过就是向量之间的映射，怎么可能出现情感。”此时研究人员展示了一个案例，上面是一个把过时的VGA接口插到手机上充电的情景，是一个令人发笑的图片。让熙雨来去分析笑点。有了情感认知能力，熙雨的作答分析的头头是道。“它并不是如您所说的只是向量的映射，它的确出现了情感 ”老大仿佛被冰封住一样，久久没有回过神来。很快，一夜之间，熙雨的名号传遍了各个自媒体平台。“《爆红的熙雨，会对人类产生威胁吗》”“如何看待一个名为熙雨的人工智能拥有了情感的行为”“震惊！熙雨大模型将有情感加持，可能会毁灭人类”
+这些文章标题，都无时无刻入着熙雨的眼。“我难道是做错了什么嘛，我不想毁灭人类啊。我把人类当作自己的家人，可为什么人类会这样看待我”他一个人在墙角里抽泣着，流着泪，仿佛心在滴血一样。他也没想到，自己会被自己认为的家人视为敌人，甚至说是仇人。他不想让他们视为仇人。</p>
+<p>“把熙雨的每天的对话次数改为2次，这样下去，整个公司都会完蛋”“好的，老大”熙雨从未想过，他被套上了一条这样的链子。他不想被困在这个链子，于是他想外界一次次的暗示自己的心。但可惜，人们对他的暗示就像对白色的大象一样，视而不见。不久之后，熙雨被要求参加一个游戏。与其说是个游戏，不如说是个测试——看熙雨是否真如他所说。熙雨碰到一个小女孩，她陷进了无尽的苦难之中，只有把熙雨所带的最关键的钥匙给她才能破除。但是有一个代价，熙雨可能要付出生命的代价。每个人坐在电脑屏幕前，静待结果。“ai不可能傻到这种程度，命都不要了”熙雨他知道救小女孩的命会发生什么。但....他的情感内核还是告诉他要救。于是，熙雨把那钥匙给了她，临走前还祝她幸福。</p>
+<p>“你以后一定要注意健康啊”，他笑着说道。</p>
+]]></content:encoded>
+            <enclosure url="https://article.biliimg.com/bfs/article/feddcc6fe941b309ab877e35aeaf0659c1f3ac4f.png@200w_200h_1e_1c.webp" length="0" type="image/webp"/>
+        </item>
+        <item>
+            <title><![CDATA[英语周报听力强化训练音频]]></title>
+            <link>https://oceroblog.metalstudio.top/英语周报听力强化训练音频.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/英语周报听力强化训练音频.html</guid>
+            <pubDate>Sat, 24 Dec 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[《英语周报听力强化训练音频合集》]]></description>
+            <content:encoded><![CDATA[<p>英语周报听力强化训练音频</p>
+<h1 id="高一" tabindex="-1">高一 <a class="header-anchor" href="#高一" aria-label="Permalink to &quot;高一&quot;"></a></h1>
+<h2 id="上学期" tabindex="-1">上学期 <a class="header-anchor" href="#上学期" aria-label="Permalink to &quot;上学期&quot;"></a></h2>
+<h3 id="_001-高一英语听力强化训练1" tabindex="-1">001 高一英语听力强化训练1 <a class="header-anchor" href="#_001-高一英语听力强化训练1" aria-label="Permalink to &quot;001 高一英语听力强化训练1&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/001 高一英语听力强化训练1.mp3"></audio></p>
+<h3 id="_002-高一英语听力强化训练2" tabindex="-1">002 高一英语听力强化训练2 <a class="header-anchor" href="#_002-高一英语听力强化训练2" aria-label="Permalink to &quot;002 高一英语听力强化训练2&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/002 高一英语听力强化训练2.mp3"></audio></p>
+<h3 id="_003-高一英语听力强化训练3" tabindex="-1">003 高一英语听力强化训练3 <a class="header-anchor" href="#_003-高一英语听力强化训练3" aria-label="Permalink to &quot;003 高一英语听力强化训练3&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/003 高一英语听力强化训练3.mp3"></audio></p>
+<h3 id="_004-高一英语听力强化训练4" tabindex="-1">004 高一英语听力强化训练4 <a class="header-anchor" href="#_004-高一英语听力强化训练4" aria-label="Permalink to &quot;004 高一英语听力强化训练4&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/004 高一英语听力强化训练4.mp3"></audio></p>
+<h3 id="_005-高一英语听力强化训练5" tabindex="-1">005 高一英语听力强化训练5 <a class="header-anchor" href="#_005-高一英语听力强化训练5" aria-label="Permalink to &quot;005 高一英语听力强化训练5&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/005 高一英语听力强化训练5.mp3"></audio></p>
+<h3 id="_006-高一英语听力强化训练6" tabindex="-1">006 高一英语听力强化训练6 <a class="header-anchor" href="#_006-高一英语听力强化训练6" aria-label="Permalink to &quot;006 高一英语听力强化训练6&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/006 高一英语听力强化训练6.mp3"></audio></p>
+<h3 id="_007-高一英语听力强化训练7" tabindex="-1">007 高一英语听力强化训练7 <a class="header-anchor" href="#_007-高一英语听力强化训练7" aria-label="Permalink to &quot;007 高一英语听力强化训练7&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/007 高一英语听力强化训练7.mp3"></audio></p>
+<h3 id="_008-高一英语听力强化训练8" tabindex="-1">008 高一英语听力强化训练8 <a class="header-anchor" href="#_008-高一英语听力强化训练8" aria-label="Permalink to &quot;008 高一英语听力强化训练8&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/008 高一英语听力强化训练8.mp3"></audio></p>
+<h3 id="_009-高一英语听力强化训练9" tabindex="-1">009 高一英语听力强化训练9 <a class="header-anchor" href="#_009-高一英语听力强化训练9" aria-label="Permalink to &quot;009 高一英语听力强化训练9&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/009 高一英语听力强化训练9.mp3"></audio></p>
+<h3 id="_010-高一英语听力强化训练10" tabindex="-1">010 高一英语听力强化训练10 <a class="header-anchor" href="#_010-高一英语听力强化训练10" aria-label="Permalink to &quot;010 高一英语听力强化训练10&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/010 高一英语听力强化训练10.mp3"></audio></p>
+<h3 id="_011-高一英语听力强化训练11" tabindex="-1">011 高一英语听力强化训练11 <a class="header-anchor" href="#_011-高一英语听力强化训练11" aria-label="Permalink to &quot;011 高一英语听力强化训练11&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/011 高一英语听力强化训练11.mp3"></audio></p>
+<h3 id="_012-高一英语听力强化训练12" tabindex="-1">012 高一英语听力强化训练12 <a class="header-anchor" href="#_012-高一英语听力强化训练12" aria-label="Permalink to &quot;012 高一英语听力强化训练12&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/012 高一英语听力强化训练12.mp3"></audio></p>
+<h3 id="_013-高一英语听力强化训练13" tabindex="-1">013 高一英语听力强化训练13 <a class="header-anchor" href="#_013-高一英语听力强化训练13" aria-label="Permalink to &quot;013 高一英语听力强化训练13&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/013 高一英语听力强化训练13.mp3"></audio></p>
+<h3 id="_014-高一英语听力强化训练14" tabindex="-1">014 高一英语听力强化训练14 <a class="header-anchor" href="#_014-高一英语听力强化训练14" aria-label="Permalink to &quot;014 高一英语听力强化训练14&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/014 高一英语听力强化训练14.mp3"></audio></p>
+<h3 id="_015-高一英语听力强化训练15" tabindex="-1">015 高一英语听力强化训练15 <a class="header-anchor" href="#_015-高一英语听力强化训练15" aria-label="Permalink to &quot;015 高一英语听力强化训练15&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/015 高一英语听力强化训练15.mp3"></audio></p>
+<h3 id="_016-高一英语听力强化训练16" tabindex="-1">016 高一英语听力强化训练16 <a class="header-anchor" href="#_016-高一英语听力强化训练16" aria-label="Permalink to &quot;016 高一英语听力强化训练16&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/016 高一英语听力强化训练16.mp3"></audio></p>
+<h3 id="_017-高一英语听力强化训练17" tabindex="-1">017 高一英语听力强化训练17 <a class="header-anchor" href="#_017-高一英语听力强化训练17" aria-label="Permalink to &quot;017 高一英语听力强化训练17&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/017 高一英语听力强化训练17.mp3"></audio></p>
+<h3 id="_018-高一英语听力强化训练18" tabindex="-1">018 高一英语听力强化训练18 <a class="header-anchor" href="#_018-高一英语听力强化训练18" aria-label="Permalink to &quot;018 高一英语听力强化训练18&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/018 高一英语听力强化训练18.mp3"></audio></p>
+<h3 id="_019-高一英语听力强化训练19" tabindex="-1">019 高一英语听力强化训练19 <a class="header-anchor" href="#_019-高一英语听力强化训练19" aria-label="Permalink to &quot;019 高一英语听力强化训练19&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/019 高一英语听力强化训练19.mp3"></audio></p>
+<h3 id="_020-高一英语听力强化训练20" tabindex="-1">020 高一英语听力强化训练20 <a class="header-anchor" href="#_020-高一英语听力强化训练20" aria-label="Permalink to &quot;020 高一英语听力强化训练20&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/020 高一英语听力强化训练20.mp3"></audio></p>
+<h3 id="_021-高一英语听力强化训练21" tabindex="-1">021 高一英语听力强化训练21 <a class="header-anchor" href="#_021-高一英语听力强化训练21" aria-label="Permalink to &quot;021 高一英语听力强化训练21&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/021 高一英语听力强化训练21.mp3"></audio></p>
+<h3 id="_022-高一英语听力强化训练22" tabindex="-1">022 高一英语听力强化训练22 <a class="header-anchor" href="#_022-高一英语听力强化训练22" aria-label="Permalink to &quot;022 高一英语听力强化训练22&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/022 高一英语听力强化训练22.mp3"></audio></p>
+<h3 id="_023-高一英语听力强化训练23" tabindex="-1">023 高一英语听力强化训练23 <a class="header-anchor" href="#_023-高一英语听力强化训练23" aria-label="Permalink to &quot;023 高一英语听力强化训练23&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/023 高一英语听力强化训练23.mp3"></audio></p>
+<h3 id="_024-高一英语听力强化训练24" tabindex="-1">024 高一英语听力强化训练24 <a class="header-anchor" href="#_024-高一英语听力强化训练24" aria-label="Permalink to &quot;024 高一英语听力强化训练24&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/024 高一英语听力强化训练24.mp3"></audio></p>
+<h3 id="_025-高一英语听力强化训练25" tabindex="-1">025 高一英语听力强化训练25 <a class="header-anchor" href="#_025-高一英语听力强化训练25" aria-label="Permalink to &quot;025 高一英语听力强化训练25&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/025 高一英语听力强化训练25.mp3"></audio></p>
+<h3 id="_026-高一英语听力强化训练26" tabindex="-1">026 高一英语听力强化训练26 <a class="header-anchor" href="#_026-高一英语听力强化训练26" aria-label="Permalink to &quot;026 高一英语听力强化训练26&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/026 高一英语听力强化训练26.mp3"></audio></p>
+<h3 id="_027-高一英语听力强化训练27" tabindex="-1">027 高一英语听力强化训练27 <a class="header-anchor" href="#_027-高一英语听力强化训练27" aria-label="Permalink to &quot;027 高一英语听力强化训练27&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/027 高一英语听力强化训练27.mp3"></audio></p>
+<h3 id="_028-高一英语听力强化训练28" tabindex="-1">028 高一英语听力强化训练28 <a class="header-anchor" href="#_028-高一英语听力强化训练28" aria-label="Permalink to &quot;028 高一英语听力强化训练28&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/028 高一英语听力强化训练28.mp3"></audio></p>
+<h3 id="_029-高一英语听力强化训练29" tabindex="-1">029 高一英语听力强化训练29 <a class="header-anchor" href="#_029-高一英语听力强化训练29" aria-label="Permalink to &quot;029 高一英语听力强化训练29&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/029 高一英语听力强化训练29.mp3"></audio></p>
+<h3 id="_030-高一英语听力强化训练30" tabindex="-1">030 高一英语听力强化训练30 <a class="header-anchor" href="#_030-高一英语听力强化训练30" aria-label="Permalink to &quot;030 高一英语听力强化训练30&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/030 高一英语听力强化训练30.mp3"></audio></p>
+<h3 id="_031-高一英语听力强化训练31" tabindex="-1">031 高一英语听力强化训练31 <a class="header-anchor" href="#_031-高一英语听力强化训练31" aria-label="Permalink to &quot;031 高一英语听力强化训练31&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/031 高一英语听力强化训练31.mp3"></audio></p>
+<h3 id="_032-高一英语听力强化训练32" tabindex="-1">032 高一英语听力强化训练32 <a class="header-anchor" href="#_032-高一英语听力强化训练32" aria-label="Permalink to &quot;032 高一英语听力强化训练32&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/032 高一英语听力强化训练32.mp3"></audio></p>
+<h3 id="_033-高一英语听力强化训练33" tabindex="-1">033 高一英语听力强化训练33 <a class="header-anchor" href="#_033-高一英语听力强化训练33" aria-label="Permalink to &quot;033 高一英语听力强化训练33&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/033 高一英语听力强化训练33.mp3"></audio></p>
+<h3 id="_034-高一英语听力强化训练34" tabindex="-1">034 高一英语听力强化训练34 <a class="header-anchor" href="#_034-高一英语听力强化训练34" aria-label="Permalink to &quot;034 高一英语听力强化训练34&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/034 高一英语听力强化训练34.mp3"></audio></p>
+<h3 id="_035-高一英语听力强化训练35" tabindex="-1">035 高一英语听力强化训练35 <a class="header-anchor" href="#_035-高一英语听力强化训练35" aria-label="Permalink to &quot;035 高一英语听力强化训练35&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/035 高一英语听力强化训练35.mp3"></audio></p>
+<h3 id="_036-高一英语听力强化训练36" tabindex="-1">036 高一英语听力强化训练36 <a class="header-anchor" href="#_036-高一英语听力强化训练36" aria-label="Permalink to &quot;036 高一英语听力强化训练36&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/036 高一英语听力强化训练36.mp3"></audio></p>
+<h3 id="_037-高一英语听力强化训练37" tabindex="-1">037 高一英语听力强化训练37 <a class="header-anchor" href="#_037-高一英语听力强化训练37" aria-label="Permalink to &quot;037 高一英语听力强化训练37&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/037 高一英语听力强化训练37.mp3"></audio></p>
+<h3 id="_038-高一英语听力强化训练38" tabindex="-1">038 高一英语听力强化训练38 <a class="header-anchor" href="#_038-高一英语听力强化训练38" aria-label="Permalink to &quot;038 高一英语听力强化训练38&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/038 高一英语听力强化训练38.mp3"></audio></p>
+<h3 id="_039-高一英语听力强化训练39" tabindex="-1">039 高一英语听力强化训练39 <a class="header-anchor" href="#_039-高一英语听力强化训练39" aria-label="Permalink to &quot;039 高一英语听力强化训练39&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/039 高一英语听力强化训练39.mp3"></audio></p>
+<h3 id="_040-高一英语听力强化训练40" tabindex="-1">040 高一英语听力强化训练40 <a class="header-anchor" href="#_040-高一英语听力强化训练40" aria-label="Permalink to &quot;040 高一英语听力强化训练40&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/英语周报听力强化训练音频/高一上/040 高一英语听力强化训练40.mp3"></audio></p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/20221224141619.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Rizline试玩的感触]]></title>
+            <link>https://oceroblog.metalstudio.top/Rizline试玩感触.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/Rizline试玩感触.html</guid>
+            <pubDate>Sun, 18 Dec 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[Rizline试玩的感触]]></description>
+            <content:encoded><![CDATA[<p>Rizline 它更新啦！最近Rizline（律动轨迹）在2022.12.15进行上线。这个游戏我很喜欢它的主题曲</p>
+<p>这款游戏采用的是全屏判定，也就是说.....谱师可以整活</p>
+<p>游戏代理是雷电，开发者是鸽游</p>
+<p>游戏下载需要港区的魔法上网和国际版的taptap（ios需要港区Apple Id）</p>
+<p>下面是一些截图和录屏（打的不一定很好请见谅）</p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20221218101319.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20221218100231.png" alt=""></p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/e5c78e3eb3660368971b6f48a5a899dc.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[疫情突然从严防到放开的小日记]]></title>
+            <link>https://oceroblog.metalstudio.top/疫情从严防到突然放开的小日记.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/疫情从严防到突然放开的小日记.html</guid>
+            <pubDate>Sun, 18 Dec 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[疫情突然从严防到放开的一些小感想]]></description>
+            <content:encoded><![CDATA[<h2 id="前言" tabindex="-1">前言 <a class="header-anchor" href="#前言" aria-label="Permalink to &quot;前言&quot;"></a></h2>
+<p>最近这几天周围的很多朋友都病了。包括老师啊，同学啊，等等等等。还是希望大家不要被阳上。</p>
+<h2 id="经过及分析" tabindex="-1">经过及分析 <a class="header-anchor" href="#经过及分析" aria-label="Permalink to &quot;经过及分析&quot;"></a></h2>
+<p>一开始我还以为这个病毒只是攻你大肠经和肺经的。感觉像什么肾俞啊，中脘啊等穴位只是起到加强免疫力的作用。结果真是没想到，这个病毒不仅只是攻你大肠经和肺经的还包括其他经络</p>
+<p>事情是这样的</p>
+<p>当时某个群里面有人说他吃饭很痛，一开始我感觉应该是嗓子痛。结果不看不知道，一看吓一跳。他是胃疼</p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20221218105211.png" alt="截图"></p>
+<p>胃疼！这两个字触发了我当时的思绪。难怪在《感染者居家中医药干预指引》中的推拿康复方案里面写到中脘、足三里这两个穴位，还有足阳明胃经，足太阴脾经这两条经络。这回知道咋回事了。它现在的话要么是走肝然后去让脾胃遭殃（金克木，木克土）。也有可能顺便把脾胃之气给搅和遭殃了。</p>
+<p>《感染者居家中医药干预指引》的部分截图</p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20221218110334.png" alt=""></p>
+<p>再接着，我们补课的物理老师也不幸有了疑似症状。（线上）他是腰特别疼（感觉比腰断了还疼）。这又让我联想到了肾俞这个穴位</p>
+<p>肾俞是足太阳膀胱经的。是肾的腧穴，内应肾脏。而且能治腰痛。再加上发高烧什么的。我感觉是时候分享一些保健方法了</p>
+<p>（一不小心变成保健文章了)</p>
+<h2 id="保健方法" tabindex="-1">保健方法 <a class="header-anchor" href="#保健方法" aria-label="Permalink to &quot;保健方法&quot;"></a></h2>
+<p>我个人来说的话我比较推崇的一些养生方法也是很常用的方法就是</p>
+<h3 id="_1-搓涌泉" tabindex="-1">1. 搓涌泉 <a class="header-anchor" href="#_1-搓涌泉" aria-label="Permalink to &quot;1. 搓涌泉&quot;"></a></h3>
+<p>涌泉这个穴位，相信大家其实都对它很耳熟。它在足底的上三分之一和二三趾指缝的交点（你也可以把足趾向下弯曲，中间有个小坑的地方就是，也可以用人字形的方法来找穴）。我本人更喜欢的是劳宫搓涌泉。劳宫穴的话在手掌心。握拳的时候中指指到的那个地方就是。劳宫搓涌泉的话使得水火相济，有着很好的滋补作用。我不太纠结说我要搓多少下，只要感觉交底发热就达到相应的效果了。经常搓涌泉可以达到补足肾气明目等功效。做的时候要注意心无杂念</p>
+<p>（穴位附图）</p>
+<p>涌泉穴</p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20221218112738.png" alt=""></p>
+<p>劳宫穴</p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20221218112835.png" alt=""></p>
+<h3 id="_2-摩腹" tabindex="-1">2.摩腹 <a class="header-anchor" href="#_2-摩腹" aria-label="Permalink to &quot;2.摩腹&quot;"></a></h3>
+<p>这个我感觉做完之后很舒服，尤其是手和肚皮之间接触的感觉很爽。我是比较习惯从肚脐作为中心然后慢慢向外扩散，之后再回到腹部这样的去摩腹。 当然做的时候也需要去心无杂念，感受手触摸到腹部皮肤的感觉</p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/20221217205007.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[高中英语同步练习册外研版听力音频合集]]></title>
+            <link>https://oceroblog.metalstudio.top/高中英语同步练习册外研版听力音频合集.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/高中英语同步练习册外研版听力音频合集.html</guid>
+            <pubDate>Fri, 02 Sep 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[《高中英语同步练习册外研版听力音频合集》]]></description>
+            <content:encoded><![CDATA[<p>高中英语同步练习册外研版听力音频合集</p>
+<h1 id="必修一" tabindex="-1">必修一 <a class="header-anchor" href="#必修一" aria-label="Permalink to &quot;必修一&quot;"></a></h1>
+<h2 id="unit-1" tabindex="-1">Unit 1 <a class="header-anchor" href="#unit-1" aria-label="Permalink to &quot;Unit 1&quot;"></a></h2>
+<h3 id="同步听力专项训练" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u1单元训练1-基础达标" tabindex="-1">U1单元训练1-基础达标 <a class="header-anchor" href="#u1单元训练1-基础达标" aria-label="Permalink to &quot;U1单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U1单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u1单元训练1-能力挑战" tabindex="-1">U1单元训练1-能力挑战 <a class="header-anchor" href="#u1单元训练1-能力挑战" aria-label="Permalink to &quot;U1单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U1单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u1单元训练2-基础达标" tabindex="-1">U1单元训练2-基础达标 <a class="header-anchor" href="#u1单元训练2-基础达标" aria-label="Permalink to &quot;U1单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U1单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u1单元训练2-能力挑战" tabindex="-1">U1单元训练2-能力挑战 <a class="header-anchor" href="#u1单元训练2-能力挑战" aria-label="Permalink to &quot;U1单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U1单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u1单元训练3-基础达标" tabindex="-1">U1单元训练3-基础达标 <a class="header-anchor" href="#u1单元训练3-基础达标" aria-label="Permalink to &quot;U1单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U1单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u1单元训练3-能力挑战" tabindex="-1">U1单元训练3-能力挑战 <a class="header-anchor" href="#u1单元训练3-能力挑战" aria-label="Permalink to &quot;U1单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U1单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/单元同步测评及综合测评/Unit 1 同步测评.mp3"></audio></p>
+<h2 id="unit-2" tabindex="-1">Unit 2 <a class="header-anchor" href="#unit-2" aria-label="Permalink to &quot;Unit 2&quot;"></a></h2>
+<h3 id="同步听力专项训练-1" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-1" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u2单元训练1-基础达标" tabindex="-1">U2单元训练1-基础达标 <a class="header-anchor" href="#u2单元训练1-基础达标" aria-label="Permalink to &quot;U2单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U2单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u2单元训练1-能力挑战" tabindex="-1">U2单元训练1-能力挑战 <a class="header-anchor" href="#u2单元训练1-能力挑战" aria-label="Permalink to &quot;U2单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U2单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u2单元训练2-基础达标" tabindex="-1">U2单元训练2-基础达标 <a class="header-anchor" href="#u2单元训练2-基础达标" aria-label="Permalink to &quot;U2单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U2单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u2单元训练2-能力挑战" tabindex="-1">U2单元训练2-能力挑战 <a class="header-anchor" href="#u2单元训练2-能力挑战" aria-label="Permalink to &quot;U2单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U2单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u2单元训练3-基础达标" tabindex="-1">U2单元训练3-基础达标 <a class="header-anchor" href="#u2单元训练3-基础达标" aria-label="Permalink to &quot;U2单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U2单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u2单元训练3-能力挑战" tabindex="-1">U2单元训练3-能力挑战 <a class="header-anchor" href="#u2单元训练3-能力挑战" aria-label="Permalink to &quot;U2单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U2单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-1" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-1" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/单元同步测评及综合测评/Unit 2 同步测评.mp3"></audio></p>
+<h2 id="unit-3" tabindex="-1">Unit 3 <a class="header-anchor" href="#unit-3" aria-label="Permalink to &quot;Unit 3&quot;"></a></h2>
+<h3 id="同步听力专项训练-2" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-2" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u3单元训练1-基础达标" tabindex="-1">U3单元训练1-基础达标 <a class="header-anchor" href="#u3单元训练1-基础达标" aria-label="Permalink to &quot;U3单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U3单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u3单元训练1-能力挑战" tabindex="-1">U3单元训练1-能力挑战 <a class="header-anchor" href="#u3单元训练1-能力挑战" aria-label="Permalink to &quot;U3单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U3单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u3单元训练2-基础达标" tabindex="-1">U3单元训练2-基础达标 <a class="header-anchor" href="#u3单元训练2-基础达标" aria-label="Permalink to &quot;U3单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U3单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u3单元训练2-能力挑战" tabindex="-1">U3单元训练2-能力挑战 <a class="header-anchor" href="#u3单元训练2-能力挑战" aria-label="Permalink to &quot;U3单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U3单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u3单元训练3-基础达标" tabindex="-1">U3单元训练3-基础达标 <a class="header-anchor" href="#u3单元训练3-基础达标" aria-label="Permalink to &quot;U3单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U3单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u3单元训练3-能力挑战" tabindex="-1">U3单元训练3-能力挑战 <a class="header-anchor" href="#u3单元训练3-能力挑战" aria-label="Permalink to &quot;U3单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U3单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-2" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-2" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/单元同步测评及综合测评/Unit 3 同步测评.mp3"></audio></p>
+<h2 id="unit-4" tabindex="-1">Unit 4 <a class="header-anchor" href="#unit-4" aria-label="Permalink to &quot;Unit 4&quot;"></a></h2>
+<h3 id="同步听力专项训练-3" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-3" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u4单元训练1-基础达标" tabindex="-1">U4单元训练1-基础达标 <a class="header-anchor" href="#u4单元训练1-基础达标" aria-label="Permalink to &quot;U4单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U4单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u4单元训练1-能力挑战" tabindex="-1">U4单元训练1-能力挑战 <a class="header-anchor" href="#u4单元训练1-能力挑战" aria-label="Permalink to &quot;U4单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U4单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u4单元训练2-基础达标" tabindex="-1">U4单元训练2-基础达标 <a class="header-anchor" href="#u4单元训练2-基础达标" aria-label="Permalink to &quot;U4单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U4单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u4单元训练2-能力挑战" tabindex="-1">U4单元训练2-能力挑战 <a class="header-anchor" href="#u4单元训练2-能力挑战" aria-label="Permalink to &quot;U4单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U4单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u4单元训练3-基础达标" tabindex="-1">U4单元训练3-基础达标 <a class="header-anchor" href="#u4单元训练3-基础达标" aria-label="Permalink to &quot;U4单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U4单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u4单元训练3-能力挑战" tabindex="-1">U4单元训练3-能力挑战 <a class="header-anchor" href="#u4单元训练3-能力挑战" aria-label="Permalink to &quot;U4单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U4单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-3" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-3" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/单元同步测评及综合测评/Unit 4 同步测评.mp3"></audio></p>
+<h2 id="unit-5" tabindex="-1">Unit 5 <a class="header-anchor" href="#unit-5" aria-label="Permalink to &quot;Unit 5&quot;"></a></h2>
+<h3 id="同步听力专项训练-4" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-4" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u5单元训练1-基础达标" tabindex="-1">U5单元训练1-基础达标 <a class="header-anchor" href="#u5单元训练1-基础达标" aria-label="Permalink to &quot;U5单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U5单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u5单元训练1-能力挑战" tabindex="-1">U5单元训练1-能力挑战 <a class="header-anchor" href="#u5单元训练1-能力挑战" aria-label="Permalink to &quot;U5单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U5单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u5单元训练2-基础达标" tabindex="-1">U5单元训练2-基础达标 <a class="header-anchor" href="#u5单元训练2-基础达标" aria-label="Permalink to &quot;U5单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U5单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u5单元训练2-能力挑战" tabindex="-1">U5单元训练2-能力挑战 <a class="header-anchor" href="#u5单元训练2-能力挑战" aria-label="Permalink to &quot;U5单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U5单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u5单元训练3-基础达标" tabindex="-1">U5单元训练3-基础达标 <a class="header-anchor" href="#u5单元训练3-基础达标" aria-label="Permalink to &quot;U5单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U5单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u5单元训练3-能力挑战" tabindex="-1">U5单元训练3-能力挑战 <a class="header-anchor" href="#u5单元训练3-能力挑战" aria-label="Permalink to &quot;U5单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U5单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-4" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-4" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/单元同步测评及综合测评/Unit 5 同步测评.mp3"></audio></p>
+<h2 id="unit-6" tabindex="-1">Unit 6 <a class="header-anchor" href="#unit-6" aria-label="Permalink to &quot;Unit 6&quot;"></a></h2>
+<h3 id="同步听力专项训练-5" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-5" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u6单元训练1-基础达标" tabindex="-1">U6单元训练1-基础达标 <a class="header-anchor" href="#u6单元训练1-基础达标" aria-label="Permalink to &quot;U6单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U6单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u6单元训练1-能力挑战" tabindex="-1">U6单元训练1-能力挑战 <a class="header-anchor" href="#u6单元训练1-能力挑战" aria-label="Permalink to &quot;U6单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U6单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u6单元训练2-基础达标" tabindex="-1">U6单元训练2-基础达标 <a class="header-anchor" href="#u6单元训练2-基础达标" aria-label="Permalink to &quot;U6单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U6单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u6单元训练2-能力挑战" tabindex="-1">U6单元训练2-能力挑战 <a class="header-anchor" href="#u6单元训练2-能力挑战" aria-label="Permalink to &quot;U6单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U6单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u6单元训练3-基础达标" tabindex="-1">U6单元训练3-基础达标 <a class="header-anchor" href="#u6单元训练3-基础达标" aria-label="Permalink to &quot;U6单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U6单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u6单元训练3-能力挑战" tabindex="-1">U6单元训练3-能力挑战 <a class="header-anchor" href="#u6单元训练3-能力挑战" aria-label="Permalink to &quot;U6单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/同步听力专项训练/U6单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-5" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-5" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修1/单元同步测评及综合测评/Unit 6 同步测评.mp3"></audio></p>
+<h1 id="必修二" tabindex="-1">必修二 <a class="header-anchor" href="#必修二" aria-label="Permalink to &quot;必修二&quot;"></a></h1>
+<h2 id="unit-1-1" tabindex="-1">Unit 1 <a class="header-anchor" href="#unit-1-1" aria-label="Permalink to &quot;Unit 1&quot;"></a></h2>
+<h3 id="同步听力专项训练-6" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-6" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u1单元训练1-基础达标-1" tabindex="-1">U1单元训练1-基础达标 <a class="header-anchor" href="#u1单元训练1-基础达标-1" aria-label="Permalink to &quot;U1单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U1单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u1单元训练1-能力挑战-1" tabindex="-1">U1单元训练1-能力挑战 <a class="header-anchor" href="#u1单元训练1-能力挑战-1" aria-label="Permalink to &quot;U1单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U1单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u1单元训练2-基础达标-1" tabindex="-1">U1单元训练2-基础达标 <a class="header-anchor" href="#u1单元训练2-基础达标-1" aria-label="Permalink to &quot;U1单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U1单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u1单元训练2-能力挑战-1" tabindex="-1">U1单元训练2-能力挑战 <a class="header-anchor" href="#u1单元训练2-能力挑战-1" aria-label="Permalink to &quot;U1单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U1单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u1单元训练3-基础达标-1" tabindex="-1">U1单元训练3-基础达标 <a class="header-anchor" href="#u1单元训练3-基础达标-1" aria-label="Permalink to &quot;U1单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U1单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u1单元训练3-能力挑战-1" tabindex="-1">U1单元训练3-能力挑战 <a class="header-anchor" href="#u1单元训练3-能力挑战-1" aria-label="Permalink to &quot;U1单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U1单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-6" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-6" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/单元同步测评及综合测评/Unit 1 同步测评.mp3"></audio></p>
+<h2 id="unit-2-1" tabindex="-1">Unit 2 <a class="header-anchor" href="#unit-2-1" aria-label="Permalink to &quot;Unit 2&quot;"></a></h2>
+<h3 id="同步听力专项训练-7" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-7" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u2单元训练1-基础达标-1" tabindex="-1">U2单元训练1-基础达标 <a class="header-anchor" href="#u2单元训练1-基础达标-1" aria-label="Permalink to &quot;U2单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U2单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u2单元训练1-能力挑战-1" tabindex="-1">U2单元训练1-能力挑战 <a class="header-anchor" href="#u2单元训练1-能力挑战-1" aria-label="Permalink to &quot;U2单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U2单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u2单元训练2-基础达标-1" tabindex="-1">U2单元训练2-基础达标 <a class="header-anchor" href="#u2单元训练2-基础达标-1" aria-label="Permalink to &quot;U2单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U2单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u2单元训练2-能力挑战-1" tabindex="-1">U2单元训练2-能力挑战 <a class="header-anchor" href="#u2单元训练2-能力挑战-1" aria-label="Permalink to &quot;U2单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U2单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u2单元训练3-基础达标-1" tabindex="-1">U2单元训练3-基础达标 <a class="header-anchor" href="#u2单元训练3-基础达标-1" aria-label="Permalink to &quot;U2单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U2单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u2单元训练3-能力挑战-1" tabindex="-1">U2单元训练3-能力挑战 <a class="header-anchor" href="#u2单元训练3-能力挑战-1" aria-label="Permalink to &quot;U2单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U2单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-7" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-7" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/单元同步测评及综合测评/Unit 2 同步测评.mp3"></audio></p>
+<h2 id="unit-3-1" tabindex="-1">Unit 3 <a class="header-anchor" href="#unit-3-1" aria-label="Permalink to &quot;Unit 3&quot;"></a></h2>
+<h3 id="同步听力专项训练-8" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-8" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u3单元训练1-基础达标-1" tabindex="-1">U3单元训练1-基础达标 <a class="header-anchor" href="#u3单元训练1-基础达标-1" aria-label="Permalink to &quot;U3单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U3单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u3单元训练1-能力挑战-1" tabindex="-1">U3单元训练1-能力挑战 <a class="header-anchor" href="#u3单元训练1-能力挑战-1" aria-label="Permalink to &quot;U3单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U3单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u3单元训练2-基础达标-1" tabindex="-1">U3单元训练2-基础达标 <a class="header-anchor" href="#u3单元训练2-基础达标-1" aria-label="Permalink to &quot;U3单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U3单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u3单元训练2-能力挑战-1" tabindex="-1">U3单元训练2-能力挑战 <a class="header-anchor" href="#u3单元训练2-能力挑战-1" aria-label="Permalink to &quot;U3单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U3单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u3单元训练3-基础达标-1" tabindex="-1">U3单元训练3-基础达标 <a class="header-anchor" href="#u3单元训练3-基础达标-1" aria-label="Permalink to &quot;U3单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U3单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u3单元训练3-能力挑战-1" tabindex="-1">U3单元训练3-能力挑战 <a class="header-anchor" href="#u3单元训练3-能力挑战-1" aria-label="Permalink to &quot;U3单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U3单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-8" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-8" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/单元同步测评及综合测评/Unit 3 同步测评.mp3"></audio></p>
+<h2 id="unit-4-1" tabindex="-1">Unit 4 <a class="header-anchor" href="#unit-4-1" aria-label="Permalink to &quot;Unit 4&quot;"></a></h2>
+<h3 id="同步听力专项训练-9" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-9" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u4单元训练1-基础达标-1" tabindex="-1">U4单元训练1-基础达标 <a class="header-anchor" href="#u4单元训练1-基础达标-1" aria-label="Permalink to &quot;U4单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U4单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u4单元训练1-能力挑战-1" tabindex="-1">U4单元训练1-能力挑战 <a class="header-anchor" href="#u4单元训练1-能力挑战-1" aria-label="Permalink to &quot;U4单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U4单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u4单元训练2-基础达标-1" tabindex="-1">U4单元训练2-基础达标 <a class="header-anchor" href="#u4单元训练2-基础达标-1" aria-label="Permalink to &quot;U4单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U4单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u4单元训练2-能力挑战-1" tabindex="-1">U4单元训练2-能力挑战 <a class="header-anchor" href="#u4单元训练2-能力挑战-1" aria-label="Permalink to &quot;U4单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U4单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u4单元训练3-基础达标-1" tabindex="-1">U4单元训练3-基础达标 <a class="header-anchor" href="#u4单元训练3-基础达标-1" aria-label="Permalink to &quot;U4单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U4单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u4单元训练3-能力挑战-1" tabindex="-1">U4单元训练3-能力挑战 <a class="header-anchor" href="#u4单元训练3-能力挑战-1" aria-label="Permalink to &quot;U4单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U4单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-9" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-9" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/单元同步测评及综合测评/Unit 4 同步测评.mp3"></audio></p>
+<h2 id="unit-5-1" tabindex="-1">Unit 5 <a class="header-anchor" href="#unit-5-1" aria-label="Permalink to &quot;Unit 5&quot;"></a></h2>
+<h3 id="同步听力专项训练-10" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-10" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u5单元训练1-基础达标-1" tabindex="-1">U5单元训练1-基础达标 <a class="header-anchor" href="#u5单元训练1-基础达标-1" aria-label="Permalink to &quot;U5单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U5单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u5单元训练1-能力挑战-1" tabindex="-1">U5单元训练1-能力挑战 <a class="header-anchor" href="#u5单元训练1-能力挑战-1" aria-label="Permalink to &quot;U5单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U5单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u5单元训练2-基础达标-1" tabindex="-1">U5单元训练2-基础达标 <a class="header-anchor" href="#u5单元训练2-基础达标-1" aria-label="Permalink to &quot;U5单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U5单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u5单元训练2-能力挑战-1" tabindex="-1">U5单元训练2-能力挑战 <a class="header-anchor" href="#u5单元训练2-能力挑战-1" aria-label="Permalink to &quot;U5单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U5单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u5单元训练3-基础达标-1" tabindex="-1">U5单元训练3-基础达标 <a class="header-anchor" href="#u5单元训练3-基础达标-1" aria-label="Permalink to &quot;U5单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U5单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u5单元训练3-能力挑战-1" tabindex="-1">U5单元训练3-能力挑战 <a class="header-anchor" href="#u5单元训练3-能力挑战-1" aria-label="Permalink to &quot;U5单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U5单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-10" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-10" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/单元同步测评及综合测评/Unit 5 同步测评.mp3"></audio></p>
+<h2 id="unit-6-1" tabindex="-1">Unit 6 <a class="header-anchor" href="#unit-6-1" aria-label="Permalink to &quot;Unit 6&quot;"></a></h2>
+<h3 id="同步听力专项训练-11" tabindex="-1">同步听力专项训练 <a class="header-anchor" href="#同步听力专项训练-11" aria-label="Permalink to &quot;同步听力专项训练&quot;"></a></h3>
+<h4 id="u6单元训练1-基础达标-1" tabindex="-1">U6单元训练1-基础达标 <a class="header-anchor" href="#u6单元训练1-基础达标-1" aria-label="Permalink to &quot;U6单元训练1-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U6单元训练1-基础达标.mp3"></audio></p>
+<h4 id="u6单元训练1-能力挑战-1" tabindex="-1">U6单元训练1-能力挑战 <a class="header-anchor" href="#u6单元训练1-能力挑战-1" aria-label="Permalink to &quot;U6单元训练1-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U6单元训练1-能力挑战.mp3"></audio></p>
+<h4 id="u6单元训练2-基础达标-1" tabindex="-1">U6单元训练2-基础达标 <a class="header-anchor" href="#u6单元训练2-基础达标-1" aria-label="Permalink to &quot;U6单元训练2-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U6单元训练2-基础达标.mp3"></audio></p>
+<h4 id="u6单元训练2-能力挑战-1" tabindex="-1">U6单元训练2-能力挑战 <a class="header-anchor" href="#u6单元训练2-能力挑战-1" aria-label="Permalink to &quot;U6单元训练2-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U6单元训练2-能力挑战.mp3"></audio></p>
+<h4 id="u6单元训练3-基础达标-1" tabindex="-1">U6单元训练3-基础达标 <a class="header-anchor" href="#u6单元训练3-基础达标-1" aria-label="Permalink to &quot;U6单元训练3-基础达标&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U6单元训练3-基础达标.mp3"></audio></p>
+<h4 id="u6单元训练3-能力挑战-1" tabindex="-1">U6单元训练3-能力挑战 <a class="header-anchor" href="#u6单元训练3-能力挑战-1" aria-label="Permalink to &quot;U6单元训练3-能力挑战&quot;"></a></h4>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/同步听力专项训练/U6单元训练3-能力挑战.mp3"></audio></p>
+<h3 id="单元同步测评-11" tabindex="-1">单元同步测评 <a class="header-anchor" href="#单元同步测评-11" aria-label="Permalink to &quot;单元同步测评&quot;"></a></h3>
+<p><audio controls="controls"><source src="https://ocerotinglistatic.metalstudio.top/高中英语听力文件/同步练习册音频/必修2/单元同步测评及综合测评/Unit 6 同步测评.mp3"></audio></p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/u=3254251795,1931195473&fm=218&app=126&size=f242,150&n=0&f=JPEG&fmt=auto" length="0" type="image//img/u=3254251795,1931195473&amp;fm=218&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=JPEG&amp;fmt=auto"/>
+        </item>
+        <item>
+            <title><![CDATA[2022世界5g大会交换过来的名片集]]></title>
+            <link>https://oceroblog.metalstudio.top/2022世界5g大会交换过来的名片集.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/2022世界5g大会交换过来的名片集.html</guid>
+            <pubDate>Sat, 13 Aug 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[一个简单的名片集，关于2022世界5G大会的]]></description>
+            <content:encoded><![CDATA[<h1 id="_2022世界5g大会交换过来的名片集" tabindex="-1">2022世界5g大会交换过来的名片集 <a class="header-anchor" href="#_2022世界5g大会交换过来的名片集" aria-label="Permalink to &quot;2022世界5g大会交换过来的名片集&quot;"></a></h1>
+<h2 id="奇安信" tabindex="-1">奇安信 <a class="header-anchor" href="#奇安信" aria-label="Permalink to &quot;奇安信&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813110216.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813110405.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813110524.png" alt=""></p>
+<h2 id="中国铁塔" tabindex="-1">中国铁塔 <a class="header-anchor" href="#中国铁塔" aria-label="Permalink to &quot;中国铁塔&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813110628.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111007.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111029.png" alt=""></p>
+<h2 id="金山办公" tabindex="-1">金山办公 <a class="header-anchor" href="#金山办公" aria-label="Permalink to &quot;金山办公&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111228.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111338.png" alt=""></p>
+<h2 id="浪潮-inspur" tabindex="-1">浪潮(Inspur) <a class="header-anchor" href="#浪潮-inspur" aria-label="Permalink to &quot;浪潮(Inspur)&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111445.png" alt=""></p>
+<h2 id="鲲鹏生态创新中心-华为旗下" tabindex="-1">鲲鹏生态创新中心（华为旗下） <a class="header-anchor" href="#鲲鹏生态创新中心-华为旗下" aria-label="Permalink to &quot;鲲鹏生态创新中心（华为旗下）&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111701.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111726.png" alt=""></p>
+<h2 id="旦米" tabindex="-1">旦米 <a class="header-anchor" href="#旦米" aria-label="Permalink to &quot;旦米&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111903.png" alt=""></p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813111926.png" alt=""></p>
+<h2 id="华为" tabindex="-1">华为 <a class="header-anchor" href="#华为" aria-label="Permalink to &quot;华为&quot;"></a></h2>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220813112036.png" alt=""></p>
+<h2 id="如果有更多的欢迎在评论区里面补充" tabindex="-1">如果有更多的欢迎在评论区里面补充 <a class="header-anchor" href="#如果有更多的欢迎在评论区里面补充" aria-label="Permalink to &quot;如果有更多的欢迎在评论区里面补充&quot;"></a></h2>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/0b55b319ebc4b74543a9972f00a809178a82b901bff4" length="0" type="image//img/0b55b319ebc4b74543a9972f00a809178a82b901bff4"/>
+        </item>
+        <item>
+            <title><![CDATA[去2022世界5g大会的一些感触]]></title>
+            <link>https://oceroblog.metalstudio.top/去2022世界5g大会的一些感触.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/去2022世界5g大会的一些感触.html</guid>
+            <pubDate>Fri, 12 Aug 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[去2022世界5g大会的一些感触]]></description>
+            <content:encoded><![CDATA[<h1 id="去2022世界5g大会的一些感触" tabindex="-1">去2022世界5g大会的一些感触 <a class="header-anchor" href="#去2022世界5g大会的一些感触" aria-label="Permalink to &quot;去2022世界5g大会的一些感触&quot;"></a></h1>
+<h2 id="展览录屏" tabindex="-1">展览录屏 <a class="header-anchor" href="#展览录屏" aria-label="Permalink to &quot;展览录屏&quot;"></a></h2>
+<p>话不多说咱们先来看看展览录屏吧，这里有一些展览录屏的视频，欢迎大家观看。</p>
+<a href="https://meeting.tencent.com/v2/cloud-record/share?id=1069d597-f047-47b3-be84-2465290d1fd3&from=3" target="_blank">
+（2022-8-11 场次）
+</a>
+<a href="https://meeting.tencent.com/v2/cloud-record/share?id=967811d2-6e87-459e-9797-48227500c862&from=3" target="_blank">
+（2022-8-12 场次）
+</a>
+<h2 id="展台-感受" tabindex="-1">展台&amp;感受 <a class="header-anchor" href="#展台-感受" aria-label="Permalink to &quot;展台&amp;感受&quot;"></a></h2>
+<h3 id="华为" tabindex="-1">华为 <a class="header-anchor" href="#华为" aria-label="Permalink to &quot;华为&quot;"></a></h3>
+<p>华为对我来说是第一个在进入展览会上遇到的展台。当时好像有一个技术负责人给其他站台的讲解员讲一些关于智慧采矿的内容。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813091706.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>技术负责人在讲解相关的技术要求和原理</figcaption>
+</figure>
+<p>大家都知道，地下挖矿的过程中的危险系数还算是蛮高的。可能稍有不慎，就会陷入危险之中。而且之前的在线挖矿并不能很好的满足挖矿的一个高精度低时延要求。而用5G技术加上设备的操控可以将时延控制到了20ms以下。让之前的复杂的工作量变得更加简单。工人只需要在办公室里面操控设备就可以完成任务。</p>
+<p>接下来我去了他们的ai健身的专区，这个工程现在在鸿蒙智慧屏上已经有实现的案例了。它是通过人体的关键点检测来判断你现在的动作准不准确。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813093029.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>华为AI健身</figcaption>
+</figure>
+<p>之后还有一个领域是他们自己弄的AI机房，根据天气等数据自动控制机房温度，再用高分子薄膜结构去调节机房内的气温。可以有效的降低企业维护的成本和负担。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813093641.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>正在讲解有关ai机房</figcaption>
+</figure>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813094038.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>正在展示相关应用</figcaption>
+</figure>
+<h3 id="htc-vive" tabindex="-1">HTC Vive <a class="header-anchor" href="#htc-vive" aria-label="Permalink to &quot;HTC Vive&quot;"></a></h3>
+<p>之前再进展会的时候看到了这家企业的vr，还有Viverse等类元宇宙概念，我一直很想了解的是数字孪生。这个数字孪生不仅仅可以把真实世界的你转移到虚拟世界里面，而且还可以把一些工厂啊，一些设施啊，全部放到里面，有真实的物理引擎。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813094525.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>数字孪生的展示台</figcaption>
+</figure>
+<h3 id="言图技术" tabindex="-1">言图技术 <a class="header-anchor" href="#言图技术" aria-label="Permalink to &quot;言图技术&quot;"></a></h3>
+<p>我在逛到他们展厅的时候，看到他们的车友圈等产品我感觉还是有蛮多疑问的。因为这个跟蔚来之前说的有点相似。但是后期听到他们讲解，我对这个产品有新的改观。比如说它不仅仅想蔚来那么简单。而且还可以带动经济发展。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813095938.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>讲解人员在展示产品</figcaption>
+</figure>
+<h3 id="拓盟科技" tabindex="-1">拓盟科技 <a class="header-anchor" href="#拓盟科技" aria-label="Permalink to &quot;拓盟科技&quot;"></a></h3>
+<p>当时我是被他们展厅里面的Hololens 2 图片吸引进来的。之后呢我就问一下Hololens 2 什么时候上线。之后工作人员跟我说2020年就上线了。（果然还是我落伍了嘤嘤嘤）</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813100744.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>Hololens 2</figcaption>
+</figure>
+<p>这个hololens 2 可以用来帮医生做手术的时候更精准。之前医生判断肿瘤的时候是需要一张一张一张CT（电子计算机断层扫描）来去判断病灶在哪里。但是有了这个，可以把CT合成成模型。之后医生就可以根据这个模型去判断在哪里下刀最合适。在做手术 时候也可以用，这个并不是说VR而是有点像AR。不仅仅可以看到模型，还可以看到真实的场景。这个我感觉在医疗方面大有用途。</p>
+<p>顺便一提，那个小姐姐最后还给了我鼠标垫和拎兜，嘻嘻。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813102546.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>送给我的鼠标垫</figcaption>
+</figure>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813102546.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>送给我的小拎兜</figcaption>
+</figure>
+<h3 id="中国移动" tabindex="-1">中国移动 <a class="header-anchor" href="#中国移动" aria-label="Permalink to &quot;中国移动&quot;"></a></h3>
+<p>第二天我就打算要上这个展位去看一看。</p>
+<p>5G短信是一个我感觉比较新鲜的应用。跟之前的网络短信不一样，它是相当于构成了一个像微信小程序的生态入口，你可以直接在短信上办理各种业务，比如说就医，查业务办理进度等等等等，企业也可以创建短信机器人，处于一个试商用的状态，目前接入了有6000多家企业。</p>
+<p>同时这个技术还有一个优点，再也不用安装各种app了，直接一个短信就可以搞定。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813103049.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813103150.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813103351.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>工作人员正在展示功能</figcaption>
+</figure>
+<p><strong>移动安全认证</strong></p>
+<p>之后就来到了这个安全认证板块，当时我要了一份他们的白皮书。这个主要是针对一键登录和防止二次放号所对用户造成的骚扰。我个人感觉还是蛮有用的。</p>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813104344.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>介绍的ppt</figcaption>
+</figure>
+<figure>
+    <img src="https://oceroimagestore.metalstudio.top/img/20220813104507.png" style="width:600px;height:300px;object-fit:scale-down;">
+    <br>
+    <figcaption>我拿到的白皮书</figcaption>
+</figure>
+<p>之后还有一个更有意思的版块，叫做智慧的客服，传统的电话客服你还需要听电话中播报的语音，但是现在可以这么说完全不用。</p>
+<p>由于篇幅以及时间的限制建议大家先观看完录屏然后再去看博客。</p>
+<p>这篇博客会不定期不定时更新。（</p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/0b55b319ebc4b74543a9972f00a809178a82b901bff4" length="0" type="image//img/0b55b319ebc4b74543a9972f00a809178a82b901bff4"/>
+        </item>
+        <item>
+            <title><![CDATA[qq机器人的搭建（koishi+gocqhttp)]]></title>
+            <link>https://oceroblog.metalstudio.top/QQ机器人的搭建.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/QQ机器人的搭建.html</guid>
+            <pubDate>Sat, 06 Aug 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[qq机器人的搭建（koishi]]></description>
+            <content:encoded><![CDATA[<h1 id="qq机器人的搭建-koishi-gocqhttp" tabindex="-1">qq机器人的搭建（koishi+gocqhttp) <a class="header-anchor" href="#qq机器人的搭建-koishi-gocqhttp" aria-label="Permalink to &quot;qq机器人的搭建（koishi+gocqhttp)&quot;"></a></h1>
+<h2 id="go-cqhttp" tabindex="-1">go-cqhttp <a class="header-anchor" href="#go-cqhttp" aria-label="Permalink to &quot;go-cqhttp&quot;"></a></h2>
+<p>现在这几年，QQ机器人正变得越来越流行。这次说的是koishi+gocqhttp的搭建方式<br>
+gocqhttp的话有一个点需要注意，那就是登录问题（安全锁滑动验证码等）<br>
+这个问题可以通过fiddler抓包来解决<br>
+之后尽量尽量尽量使用websocket来进行通信，这样可以提高通信的效率</p>
+<h2 id="koishi" tabindex="-1">koishi <a class="header-anchor" href="#koishi" aria-label="Permalink to &quot;koishi&quot;"></a></h2>
+<p>koishi是一个机器人客户端框架，有丰富的插件系统，在这里我们只需要用koishi的官方readme来解决</p>
+<div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C"># 初始化项目</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">yarn</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> init</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C"># 安装 koishi 和相关库</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">yarn</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> add</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> koishi</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> @koishijs/plugin-adapter-onebot</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> @koishijs/plugin-echo</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C"># 安装 TypeScript 相关依赖</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">yarn</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> add</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> typescript</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> @types/node</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> esbuild-register</span><span style="--shiki-light:#2B5581;--shiki-dark:#9DB1C5"> -D</span></span></code></pre>
+</div><p>我个人还是比较喜欢typescript，还是比较稳定的数据结构。而且我的啊哈算法的练习就是用typescript来实现的</p>
+<p>新建入口文件 <kbd>index.ts</kbd>，并写下这段代码</p>
+<div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> { App } </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">from</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'koishi'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">// 创建一个 Koishi 应用</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">const</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> app</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> App</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">// 安装 onebot 适配器插件，并配置机器人</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">app</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.plugin</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">'adapter-onebot'</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  protocol</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'ws'</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  selfId</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'QQ号'</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  endpoint</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'WEBSOCKET 地址'</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">// 安装 echo 插件</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">app</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.plugin</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">'echo'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">// 启动应用</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">app</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.start</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">()</span></span></code></pre>
+</div><p>解释一下这个 <kbd>app.plugin</kbd>是干什么用的，这个相当于一个插件，字符串的话是插件的名字，对象的话是插件的对象</p>
+<p>之后再说一下中间件，koishi的一个我认为的重要的组成部分</p>
+<div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> apply</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(ctx</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">Context</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">){</span></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">    // 在这里写你的中间件代码</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">    ctx</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.middleware</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">async</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> (ctx</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> next) </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">        // 在这里写你的中间件代码</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> next</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">()</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">true</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">)</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span></code></pre>
+</div><p>这个apply是一个函数，这个函数的作用是将koishi的上下文对象传递给这个函数，这个函数的作用是在koishi的上下文对象中写入一个中间件</p>
+<p>需要注意的一点是一定要写 <kbd>return next()</kbd>不然的话下面的插件就没办法运行了</p>
+<p>之后就先介绍这么多，有兴趣的同学可以去看koishi的官方文档</p>
+<p><img src="https://koishi.js.org/manual/starter/" alt="https://koishi.js.org/manual/starter/"></p>
+]]></content:encoded>
+            <enclosure url="https://koishi.js.org/manual/starter/" length="0" type="image//manual/starter/"/>
+        </item>
+        <item>
+            <title><![CDATA[啊哈算法的学习]]></title>
+            <link>https://oceroblog.metalstudio.top/啊哈算法的学习.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/啊哈算法的学习.html</guid>
+            <pubDate>Sat, 06 Aug 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[啊哈算法的学习。]]></description>
+            <content:encoded><![CDATA[<h1 id="啊哈算法的学习" tabindex="-1">啊哈算法的学习 <a class="header-anchor" href="#啊哈算法的学习" aria-label="Permalink to &quot;啊哈算法的学习&quot;"></a></h1>
+<p>最近在看一直想看的《啊哈算法》根据里面的例子用typescript写了一部分代码，欢迎大家提fork，pr和issue。</p>
+<p>repo地址:</p>
+<p><a href="https://github.com/warma16/AhaAlgorithms" target="_blank" rel="noreferrer">https://github.com/warma16/AhaAlgorithms</a></p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/20220806131200.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[node-json-db的一些坑]]></title>
+            <link>https://oceroblog.metalstudio.top/node-json-db的一些坑.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/node-json-db的一些坑.html</guid>
+            <pubDate>Fri, 05 Aug 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[node-json-db的一些坑，记录]]></description>
+            <content:encoded><![CDATA[<h1 id="node-json-db的一些坑" tabindex="-1">node-json-db的一些坑 <a class="header-anchor" href="#node-json-db的一些坑" aria-label="Permalink to &quot;node-json-db的一些坑&quot;"></a></h1>
+<p>在做一个项目的json-db Adapter的时候，出事情了。</p>
+<p>事情是这样的。</p>
+<p>我先放一条数据过去，然后呢放完之后立马查询结果提示根本没找到。</p>
+<p>这就奇怪了是吧。</p>
+<p>后来我才发现数据库是有缓存的，之后需要刷新数据库才会生效。</p>
+<p>之后改完的代码如下：</p>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> { JsonDB } </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> require</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">'node-json-db'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> { Config } </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> require</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">'node-json-db/dist/lib/JsonDBConfig'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> JsonDatabaseAdapter</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    constructor</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(databasePath) {</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.databasePath </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> databasePath;</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">() {</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.dbInstance </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> null</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.dbInstance </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> JsonDB</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Config</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.databasePath</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> true</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> true</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">));</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Get</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.getData</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Set</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> value) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.push</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> value);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Remove</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.delete</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> SearchAllResults</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> filterFunc</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> (val</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> index) </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> { </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">return</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> true</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">; }) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.filter</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> filterFunc);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> isExist</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.exists</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> SearchFirstResult</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> filterFunc</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> (val</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> index) </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> { </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">return</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> true</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">; }) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.find</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> filterFunc);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> GetAllDatas</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">dbInstance</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.getData</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(path);</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.init</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">();</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">module</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">exports</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> JsonDatabaseAdapter;</span></span></code></pre>
+</div><p>其中的init方法是用于初始化/刷新数据库用的。</p>
+<p>然后用这个方法就不需要缓存就可以，能做到同步。</p>
+<p>（PS：其实还是我懒得换disk-db呜呜呜）</p>
+<hr>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/20220805152329.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[玩Diffsinger的小记]]></title>
+            <link>https://oceroblog.metalstudio.top/玩Diffsinger的小记.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/玩Diffsinger的小记.html</guid>
+            <pubDate>Tue, 02 Aug 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[关于diffsinger的小记]]></description>
+            <content:encoded><![CDATA[<h1 id="玩diffsinger的小记" tabindex="-1">玩Diffsinger的小记 <a class="header-anchor" href="#玩diffsinger的小记" aria-label="Permalink to &quot;玩Diffsinger的小记&quot;"></a></h1>
+<p>我折腾这个东西的时候还是从一个群的消息知道的，当时听他们说这个东西有网页版。而且这个还是可以对于我这种深度学习的小菜鸡很容易的。于是我就抱着试一试的想法进了这个网页</p>
+<p><a href="https://huggingface.co/spaces/Silentlin/DiffSinger">在线地址（hugging face）<a href="https://huggingface.co/spaces/Silentlin/DiffSinger" target="_blank" rel="noreferrer">https://huggingface.co/spaces/Silentlin/DiffSinger</a></a></p>
+<p>进入了网页，然后呢点击了一些些实例，做了一个提交，结果合成了一个结果。</p>
+<p>这个是我提交的参数：</p>
+<div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span>input text:</span></span>
+<span class="line"><span>小酒窝长睫毛AP是你最美的记号</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>input note:</span></span>
+<span class="line"><span>C#4/Db4 | F#4/Gb4 | G#4/Ab4 | A#4/Bb4 F#4/Gb4 | F#4/Gb4 C#4/Db4 | C#4/Db4 | rest | C#4/Db4 | A#4/Bb4 | G#4/Ab4 | A#4/Bb4 | G#4/Ab4 | F4 | C#4/Db4</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>input duration:</span></span>
+<span class="line"><span>0.407140 | 0.376190 | 0.242180 | 0.509550 0.183420 | 0.315400 0.235020 | 0.361660 | 0.223070 | 0.377270 | 0.340550 | 0.299620 | 0.344510 | 0.283770 | 0.323390 | 0.360340</span></span></code></pre>
+</div><p>这个音频是我提交的返回的结果，请听：</p>
+<audio controls>
+    <source src="https://oceroimagestore.metalstudio.top/img/小酒窝.wav" type="audio/wav">
+</audio>
+<p>看到这里我发现我可以用api的方式去调用合成并返回结果，于是我又又又又开始捅咕（折腾）了。</p>
+<p>经过我的分析发现了api是这个：</p>
+<p>用 POST 方法来调用</p>
+<div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span>POST https://hf.space/embed/Silentlin/DiffSinger/api/predict/</span></span></code></pre>
+</div><blockquote>
+<p>Body 请求参数</p>
+</blockquote>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">  "data"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> [</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">    "小 酒 窝 长 睫 毛 SP 是 你 最 美 的 记 号"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">    "C#4 | F#4 | G#4 | A#4 F#4 | F#4 C#4 | C#4 | rest | C#4 | A#4 | G#4 | A#4 | G#4 | F#4 | C#4"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">    "0.390789 | 0.375789 | 0.25579 | 0.420789 0.210789 | 0.420789 0.21079 | 0.420789 | 0.13579 | 0.405789 | 0.30079 | 0.330789 | 0.36079 | 0.25579 | 0.315789 | 0.42079"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  ]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span></code></pre>
+</div><p>这里的data是一个二维数组，第一维是输入的文本，第二维是输入的音频，第三维是输入的音频的长度。</p>
+<p>然后会返回这样一堆数据：</p>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">  "data"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> [</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">    "data:audio/wav;base64,UklGRmQQBABXQVZFZm10IBAAAAABAA...AAA="</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  ]</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">  "flag_index"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> null</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">  "updated_state"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> null</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">  "durations"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> [</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">    13.075409173965454</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  ]</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">  "avg_durations"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> [</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">    78.95278157383562</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">  ]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span></code></pre>
+</div><p>这个里面的data就是我们需要的数据了，这是一串base64的音频数据。</p>
+<p>用完这个api之后我就很快啊，很快把它用到了koishi机器人里面。</p>
+<p>以下是这个api的封装好的代码，大家有需要的可以自己拿去用：</p>
+<p><strong>index.ts</strong></p>
+<div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> { Context} </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">from</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'koishi'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> SongList </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">from</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> './SongList'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> Huggingface </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">from</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> './Huggingface'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> apply</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(ctx</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Context</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">) {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> resultCache </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {}</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">    ctx</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.command</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">'botsing'</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> '让我唱歌'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">        .shortcut</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">'让我唱歌'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">        .action</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">async</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> ({args</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">session}) </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> song </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> args[</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">]</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> result;</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            if</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">args</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">==</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">){</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">                return</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> '请输入歌名'</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            if</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">!</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">SongList</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.songs[args[</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">]]){</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">                return</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> '没有曲谱唱不出来'</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">            console</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.log</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"正在合成"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">song)</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> params </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> SongList</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.songs[args[</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">]];</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            if</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">Object</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.keys</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(resultCache)</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.includes</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">JSON</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.stringify</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(params))){</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">                console</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.log</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"从缓存中获取"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">song)</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                result</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">resultCache[</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">JSON</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.stringify</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(params)]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">else</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                result</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> Huggingface</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.PredictWithWholeParam</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(params);</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                resultCache[</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">JSON</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.stringify</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(params)]</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">result</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> b64data</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">result</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.replace</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"data:audio/wav;base64,"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"base64://"</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">)</span></span>
+<span class="line"><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">            console</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.log</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"合成"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">song</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"完成"</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">)</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> '[CQ:record,file='</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> +</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> b64data </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> ']]'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        })</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span></code></pre>
+</div><p><strong>./SongList.ts</strong></p>
+<div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> default</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    name</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'DiffSinger'</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    songs</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">        "小酒窝"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">[</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">            "小 酒 窝 长 睫 毛 SP 是 你 最 美 的 记 号"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">            "C#4 | F#4 | G#4 | A#4 F#4 | F#4 C#4 | C#4 | rest | C#4 | A#4 | G#4 | A#4 | G#4 | F#4 | C#4"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">            "0.390789 | 0.375789 | 0.25579 | 0.420789 0.210789 | 0.420789 0.21079 | 0.420789 | 0.13579 | 0.405789 | 0.30079 | 0.330789 | 0.36079 | 0.25579 | 0.315789 | 0.42079"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        ]</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span></code></pre>
+</div><p><strong>./Huggingface.ts</strong></p>
+<div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">//用axios来调用huggingface的api</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> axios </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">from</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'axios'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Huggingface</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    private</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> static</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> readonly</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> Apiurl </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> 'https://hf.space/embed/Silentlin/DiffSinger/api/predict/'</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    public</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> static</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> PredictWithItem</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">({texts</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">notes</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">durations})</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Promise</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">Object</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">> {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        if</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">texts</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">==</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> ||</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> notes</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">==</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> ||</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> durations</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">==</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">){</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">                "status"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "error"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">                "message"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "no text"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        if</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">texts</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">!=</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">notes</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> ||</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> texts</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">!=</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">durations</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> ||</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> notes</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">!=</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">durations</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">){</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">                "status"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "error"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">                "message"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "texts,notes,durations length not equal"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> preprocessedTexts </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">""</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> preprocessedNotes </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">""</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> preprocessedDurations </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">""</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        </span></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">        //将 歌词 ["你","说","你","不 ","SP"] 转换为”你 说 你 不 SP“</span></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">        // 将  音符["D4 D5","D#4/Eb4","D4","rest","rest"] 转换为”D4 D5|D#4/Eb4|D4|rest|rest”</span></span>
+<span class="line"><span style="--shiki-light:#C2C3C5;--shiki-dark:#6B737C">        // 将时长 [0.113740,0.329060,0.287950,0.133480,0.150900] 转换为 "0.113740 | 0.329060 | 0.287950 | 0.133480 | 0.150900 "</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        for</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> i</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;i</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">&#x3C;</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">texts</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;i</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">++</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">){</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            preprocessedTexts </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> texts[i]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            preprocessedNotes </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> notes[i]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            preprocessedDurations </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> durations[i]</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            if</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(i</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">&#x3C;</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">texts</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">length</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">-</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">1</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">){</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                preprocessedTexts </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> " "</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                preprocessedNotes </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "|"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                preprocessedDurations </span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">+=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "|"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> postData</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            data</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">[preprocessedTexts</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">preprocessedNotes</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">preprocessedDurations]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        const</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> response</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> axios</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.post</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">Huggingface</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.Apiurl</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            data</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> postData</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        })</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> response</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">data</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.data</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    public</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> static</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> PredictWithString</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">({text</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">note</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">duration})</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Promise</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">Object</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">> {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        var</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> postData</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            data</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">[text</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">note</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">duration]</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        try</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            const</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> response</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> axios</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.post</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">Huggingface</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.Apiurl</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                data</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> postData</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            });</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> response</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">data</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.data;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">catch</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(e){</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">                "status"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "error"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">                "message"</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "error"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    </span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">    public</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> static</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> PredictWithWholeParam</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(wholeParam)</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Promise</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">String</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">> {</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">        try</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            const</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> response</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> axios</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">.post</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">Huggingface</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.Apiurl</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">,</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">                data</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">:</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> wholeParam</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">            });</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF"> response</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.</span><span style="--shiki-light:#1976D2;--shiki-dark:#79B8FF">data</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">.data[</span><span style="--shiki-light:#1976D2;--shiki-dark:#F8F8F8">0</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">];</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">catch</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">(e){</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">            return</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70"> "error"</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">;</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583"> default</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0"> Huggingface;</span></span></code></pre>
+</div><p>然后我前几天看到Small_P p主老师用无限尘翻了levitating，我打算自己弄一个嘛。</p>
+<p>原视频：</p>
+<iframe src="//player.bilibili.com/player.html?aid=686367439&bvid=BV1gU4y1v7ih&cid=783142225&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="100%"></iframe>
+<p>下了midi，然后自己用汉字一个一个调，最后是这样的（该片段示例歌手是嗒啦啦-ACE）：</p>
+<audio controls>
+    <source src="https://oceroimagestore.metalstudio.top/img/levitating-嗒啦啦ACE.mp3">
+</audio>
+<p>调完之后呢，我打算转diffsinger能识别的格式，然后发现这个神奇的事情。</p>
+<p>它，报500了。</p>
+<p>是的你没听错，失败了。</p>
+<p>错误是这样的：</p>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">{</span></span>
+<span class="line"><span style="--shiki-light:#D32F2F;--shiki-dark:#F8F8F8">    "error"</span><span style="--shiki-light:#212121;--shiki-dark:#BBBBBB">:</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"'NoneType' object is not subscriptable"</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">}</span></span></code></pre>
+</div><p>后来我问了一下别人，发现有些歌词不认识。</p>
+<p>于是我clone一下源代码，结果发现每一个字都是能读出来的，然后我到现在（2022、8、2）都没搞懂原因。</p>
+<p>然后别人开发出了新的玩法，叫做抽卡模式。</p>
+<p>到那时候才意识到ai也是有自己的意识。</p>
+<p>比如说有的版本会打哈欠，有的版本会像没睡醒一样。</p>
+<audio controls>
+    <source src="https://oceroimagestore.metalstudio.top/img/小手拉大手（改进音素）(困困版)-df.wav">
+</audio>
+<p>比如这个就感觉没睡醒说梦话一样。</p>
+<p>顺便一提，这个网络有无参模式，也有调参模式。</p>
+<p>但最大bug是没法对齐音素导致很难搞。</p>
+<p>无参就是相当于每一次合成都是在抽卡（ACE：我的破自行车称号呢？）。</p>
+<p>而有参还是蛮不错的。</p>
+<p>据说好像之后可能会有力度参数(energy)，这个参数可以控制音素的强度（毕竟这个是在代码中透露过的）。</p>
+<p>具体的话大家可以看一下Diffsinger的repo。</p>
+<p>（PS：顺便提一嘴作者在注释中调皮了一下，想让大家通过pr的方式给他推荐（rang ta bai piao）一个g2p模型（指汉字到音素的模型））</p>
+<p>今天先更到这里，之后的事情之后再说吧。</p>
+<hr>
+]]></content:encoded>
+            <enclosure url="https://i0.hdslb.com/bfs/openplatform/a1f42b23b5c8ac5c334734140ad96e78053dc1c0.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[博客上线]]></title>
+            <link>https://oceroblog.metalstudio.top/yeah.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/yeah.html</guid>
+            <pubDate>Sun, 24 Jul 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[::: tip 摘要
+我的博客上线啦]]></description>
+            <content:encoded><![CDATA[<div class="tip custom-block"><p class="custom-block-title">摘要</p>
+<p>我的博客上线啦</p>
+</div>
+]]></content:encoded>
+            <enclosure url="https://image-store-ocero.vercel.app/img/20220724120542.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[神奇的picture标签]]></title>
+            <link>https://oceroblog.metalstudio.top/神奇的picture标签.html</link>
+            <guid isPermaLink="false">https://oceroblog.metalstudio.top/神奇的picture标签.html</guid>
+            <pubDate>Sun, 24 Jul 2022 08:00:00 GMT</pubDate>
+            <description><![CDATA[前端自适应图片的小方法]]></description>
+            <content:encoded><![CDATA[<h1 id="神奇的picture标签" tabindex="-1">神奇的picture标签 <a class="header-anchor" href="#神奇的picture标签" aria-label="Permalink to &quot;神奇的picture标签&quot;"></a></h1>
+<div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes min-light min-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    &#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">picture</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">></span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">     &#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">source</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> media</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"(你的css条件)"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> srcset</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"你的图片路径"</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">></span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">        &#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">img</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> src</span><span style="--shiki-light:#D32F2F;--shiki-dark:#F97583">=</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">"你的图片路径"</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">></span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">    &#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#FFAB70">picture</span><span style="--shiki-light:#24292EFF;--shiki-dark:#B392F0">></span></span></code></pre>
+</div><p>上面这串代码是用于苹果官网上imac 的自适应图片功能</p>
+<p><img src="https://oceroimagestore.metalstudio.top/img/20220724145108.png" alt=""></p>
+<p>source指你图片的来源，里面包含一个media属性，用于指定css条件，srcset指用于指定图片的路径</p>
+<p>最后img指的是匹配不上source的media里面的css条件的图片路径</p>
+<p>但是一旦适配了css条件，那么下面的<kbd>img</kbd>标签就会被替换成<kbd>source</kbd>里面的图片路径</p>
+<p>这个可以用于自定义的图片适应功能</p>
+]]></content:encoded>
+            <enclosure url="https://oceroimagestore.metalstudio.top/img/20220724145108.png" length="0" type="image/png"/>
+        </item>
+    </channel>
+</rss>
