@@ -87,3 +87,4 @@ typings/
 
 default.conf
 Dockerfile
+yarn.lock
