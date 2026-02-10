@@ -298,7 +298,7 @@ const teekConfig = defineTeekConfig({
     {
       provider: "baidu",
       options: {
-        id: "c001f53872329918b27f32dc8b9f5a1e"
+        id: "7f10c4e6536938071be87e0b0053276a"
       }
     }
   ],
