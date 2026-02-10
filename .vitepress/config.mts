@@ -8,6 +8,8 @@ const RSS: RSSOptions = {
   baseUrl,
   copyright: 'Copyright (c) 2022-present, ocero',
 }
+const avatar="https://i0.hdslb.com/bfs/openplatform/bbba36e8cf4d16635fa5cc563ab1bbb813b4b9fe.jpg"
+const slogan="一个单调又有趣的博客"
 
 // ==================== Teek 主题配置 ====================
 const teekConfig = defineTeekConfig({
@@ -41,7 +43,7 @@ const teekConfig = defineTeekConfig({
   blogger: {
     name: "ocero",
     slogan: "一个平平无奇的小菜鸡，现在在尝试着做快乐的事情",
-    avatar: "https://i0.hdslb.com/bfs/openplatform/a3368595a5bd673f642010315de3c65a178ecd86.png",
+    avatar: avatar,
     shape: "circle-rotate", // 可旋转圆形头像
     circleSize: 100,
     status: {
@@ -161,10 +163,10 @@ const teekConfig = defineTeekConfig({
     enabled: true, // 是否启用友情链接卡片
     list: [
       {
-        name: "夜灵空的博客",
-        desc: "夜灵空的博客",
-        avatar: "https://oceroimagestore.metalstudio.top/img/v2-3ac2f78a023f8d0caab8ba20792ca5a2_xll.jpg",
-        link: "https://blog.imylk.top/?from=oceroBlog"
+        name: "逐水寻源",
+        avatar: "https://www.zair.top/img/logo.png", // 您的头像
+        desc: "欢迎来到逐水寻源，这是个人技术博客，汇聚了我在计算机技术、数据科学和人工智能等领域的学习与实践。从编程技巧到算法解析，从数据分析到机器学习项目，从技术知识到个人成长故事，这里有丰富的内容等待你的探索。让我们一起学习，一起成长，解锁技术世界的无限可能！",
+        link: "https://www.zair.top/?from=oceroBlog"
       },
       {
         name: "Py's Whisper",
@@ -173,10 +175,10 @@ const teekConfig = defineTeekConfig({
         link: "https://whisper.pyliubaolin.top/?from=oceroBlog"
       },
       {
-        name: "scooo的博客",
-        desc: "无限进步",
-        avatar: "https://i0.hdslb.com/bfs/openplatform/acfee2cf6d55097a169985ff26967e65a9269cc7.png",
-        link: "https://scooomaker.top/?from=oceroBlog"
+        name: "喵喵小窝",
+        link: "https://blog.hikariyo.net/?from=oceroBlog",
+        avatar: "https://hikariyo.net/avatar.jpg",
+        desc: "做点有趣的事"
       },
       {
         name: "kifuan",
@@ -212,7 +214,8 @@ const teekConfig = defineTeekConfig({
     createTime:"2022-07-24",
     //title: "站点信息",
     appendInfo: [
-      { key: "record", label: "备案信息", value: "萌ICP备20224080号" }
+      { key: "record", label: "备案信息", value: "萌ICP备20224080号" },
+      { key:"friendLinkTemplate",label:"友链格式",value:`nickname:ocero的博客 avatar:${avatar} description:${slogan} url:${baseUrl}`}
     ],
     wordCount:true,
     readingTime:true
@@ -347,7 +350,7 @@ export default defineConfig({
       rel: 'icon', 
       href: '/headimg_dl.ico' 
     }],
-    ['link', { 
+    /*['link', { 
       rel: 'stylesheet', 
       href: '/FluentDesign/core.css' 
     }],
@@ -355,7 +358,7 @@ export default defineConfig({
       rel: 'stylesheet', 
       href: '/FluentDesign/icons.css' 
     }],
-    ['script', { src: '/FluentDesign/scripts.js' }],
+    ['script', { src: '/FluentDesign/scripts.js' }],*/
     ['meta', { 
       name: 'viewport', 
       content: 'width=device-width,initial-scale=1,user-scalable=no' 
@@ -365,7 +368,7 @@ export default defineConfig({
       content: 'code-VMBvl258ky' 
     }],
     // 百度统计（原脚本已集成到 siteAnalytics，这里可以删除或保留）
-    ['script', {}, `
+    /*['script', {}, `
       var _hmt = _hmt || [];
       (function() {
         var hm = document.createElement("script");
@@ -373,7 +376,7 @@ export default defineConfig({
         var s = document.getElementsByTagName("script")[0]; 
         s.parentNode.insertBefore(hm, s);
       })();
-    `]
+    `]*/
   ],
   
   // Markdown 配置
@@ -403,6 +406,7 @@ export default defineConfig({
       { text: '分类', link: '/categories', activeMatch: '/categories' },
       { text: '标签', link: '/tags', activeMatch: '/tags' },
       { text: '历程', link: '/archives', activeMatch: '/archives' },
+      {text:"开往",link:"https://www.travellings.cn/go.html"},
       { text: '关于', link: '/about/', activeMatch: '/about/' }
     ],
     
@@ -438,7 +442,7 @@ export default defineConfig({
   },
 
   sitemap:{
-    hostname:"https://oceroblog.metalstudio.top"
+    hostname:baseUrl
   },
 
   
